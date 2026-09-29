@@ -3,7 +3,12 @@
 --
 -- HOW TO RUN THIS:
 -- Supabase Dashboard -> SQL Editor -> New query -> paste this whole file
--- -> Run. It's safe to run once on a fresh project.
+-- -> Run.
+--
+-- This script is safe to run more than once — if you already set the
+-- Staff Portal up before and are adding a new feature, just paste in the
+-- latest version of this file and run it again. Existing tables, rows
+-- and policies are left alone; only what's missing gets created.
 --
 -- See SUPABASE-SETUP.md for the full walkthrough.
 -- ---------------------------------------------------------------------
@@ -45,6 +50,21 @@ create table if not exists public.messages (
 create index if not exists messages_conversation_id_idx on public.messages (conversation_id);
 create index if not exists messages_participants_idx on public.messages using gin (participants);
 
+-- Stock listings shown on the public Home page ("What we bring in").
+-- Only staff in the departments named below (or anyone marked is_admin)
+-- can add, edit or remove items — see the RLS policies further down.
+create table if not exists public.stock_items (
+  id uuid primary key default gen_random_uuid(),
+  category text not null,
+  brand text not null,
+  weight text not null,
+  created_by uuid references auth.users (id) on delete set null,
+  created_by_name text,
+  created_at timestamptz not null default now()
+);
+
+create index if not exists stock_items_category_idx on public.stock_items (category);
+
 -- =========================================================
 -- 2. Row Level Security
 -- =========================================================
@@ -52,6 +72,7 @@ create index if not exists messages_participants_idx on public.messages using gi
 alter table public.staff enable row level security;
 alter table public.notices enable row level security;
 alter table public.messages enable row level security;
+alter table public.stock_items enable row level security;
 
 -- --- staff -------------------------------------------------
 -- Any signed-in staff member can read the directory (needed so Messages
@@ -114,13 +135,69 @@ create policy "messages_insert_participant"
   on public.messages for insert
   with check (auth.uid() = any (participants) and auth.uid() = sender_id);
 
+-- --- stock_items -------------------------------------------------
+-- Read is public — this is what powers the public Home page's "What we
+-- bring in" section, which has no login. Adding, editing or removing
+-- items is restricted to staff in Administration & Accounts or Sales &
+-- Distribution, or anyone marked is_admin — change the department list
+-- below if you want to add or remove who's allowed.
+drop policy if exists "stock_items_select_public" on public.stock_items;
+create policy "stock_items_select_public"
+  on public.stock_items for select
+  using (true);
+
+drop policy if exists "stock_items_insert_authorized" on public.stock_items;
+create policy "stock_items_insert_authorized"
+  on public.stock_items for insert
+  with check (
+    exists (
+      select 1 from public.staff
+      where id = auth.uid()
+        and (is_admin = true or department in ('Administration & Accounts', 'Sales & Distribution'))
+    )
+  );
+
+drop policy if exists "stock_items_update_authorized" on public.stock_items;
+create policy "stock_items_update_authorized"
+  on public.stock_items for update
+  using (
+    exists (
+      select 1 from public.staff
+      where id = auth.uid()
+        and (is_admin = true or department in ('Administration & Accounts', 'Sales & Distribution'))
+    )
+  );
+
+drop policy if exists "stock_items_delete_authorized" on public.stock_items;
+create policy "stock_items_delete_authorized"
+  on public.stock_items for delete
+  using (
+    exists (
+      select 1 from public.staff
+      where id = auth.uid()
+        and (is_admin = true or department in ('Administration & Accounts', 'Sales & Distribution'))
+    )
+  );
+
 -- =========================================================
--- 3. Realtime — so Messages and the Notice Board update live
+-- 3. Realtime — so Messages, the Notice Board and Stock Listings
+--    update live, without a page refresh
 -- =========================================================
 
-alter publication supabase_realtime add table public.staff;
-alter publication supabase_realtime add table public.notices;
-alter publication supabase_realtime add table public.messages;
+do $$
+declare
+  t text;
+begin
+  foreach t in array array['staff', 'notices', 'messages', 'stock_items']
+  loop
+    if not exists (
+      select 1 from pg_publication_tables
+      where pubname = 'supabase_realtime' and schemaname = 'public' and tablename = t
+    ) then
+      execute format('alter publication supabase_realtime add table public.%I', t);
+    end if;
+  end loop;
+end $$;
 
 -- =========================================================
 -- 4. Storage bucket for profile photos

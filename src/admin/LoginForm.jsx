@@ -100,7 +100,8 @@ export default function LoginForm() {
         </form>
 
         <p className="mt-6 text-xs text-steel leading-relaxed">
-          New staff member? Ask management to create your account. Once created, sign in above with that email  you'll be asked
+          New staff member? Ask management to create your account (Supabase Dashboard →
+          Authentication → Add user). Once created, sign in above with that email — you'll be asked
           to complete your profile the first time.
         </p>
       </div>

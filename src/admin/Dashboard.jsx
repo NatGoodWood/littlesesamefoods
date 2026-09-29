@@ -1,19 +1,23 @@
 import { useState } from 'react'
 import { supabase } from '../supabase.js'
+import { canManageStock } from '../data/settings.js'
 import StaffAvatar from './StaffAvatar.jsx'
 import ProfileTab from './ProfileTab.jsx'
 import MessagesTab from './MessagesTab.jsx'
 import NoticeBoardTab from './NoticeBoardTab.jsx'
+import StockTab from './StockTab.jsx'
 import WebsiteAdminTab from './WebsiteAdminTab.jsx'
 import ErpTab from './ErpTab.jsx'
 
 export default function Dashboard({ user, profile, onProfileUpdate }) {
   const [tab, setTab] = useState('profile')
+  const canEditStock = canManageStock(profile)
 
   const tabs = [
     { id: 'profile', label: 'My Profile' },
     { id: 'messages', label: 'Messages' },
     { id: 'notices', label: 'Notice Board' },
+    ...(canEditStock ? [{ id: 'stock', label: 'Stock Listings' }] : []),
     ...(profile.is_admin ? [{ id: 'website', label: 'Website Admin' }] : []),
     { id: 'erp', label: 'ERP & HRM (Alerio)' },
   ]
@@ -60,6 +64,7 @@ export default function Dashboard({ user, profile, onProfileUpdate }) {
         {tab === 'profile' && <ProfileTab user={user} profile={profile} onUpdate={onProfileUpdate} />}
         {tab === 'messages' && <MessagesTab user={user} profile={profile} />}
         {tab === 'notices' && <NoticeBoardTab user={user} profile={profile} />}
+        {tab === 'stock' && canEditStock && <StockTab user={user} profile={profile} />}
         {tab === 'website' && profile.is_admin && <WebsiteAdminTab />}
         {tab === 'erp' && <ErpTab />}
       </div>

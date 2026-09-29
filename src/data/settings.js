@@ -20,6 +20,27 @@ export const STAFF_DEPARTMENTS = [
 ]
 
 // -----------------------------------------------------------------------
+// Stock listings ("What we bring in" on the public Home page)
+// -----------------------------------------------------------------------
+// These are the categories staff can file stock items under — keep them
+// in sync with the category names in src/pages/Home.jsx.
+export const PRODUCT_CATEGORIES = [
+  'Poultry',
+  'Beef & Meat',
+  'Seafood',
+]
+
+// Only staff in one of these departments (or anyone with is_admin) can
+// add, edit or remove stock listings — per management's request, that's
+// Admin & HR / Accounts and Sales. Directors and Operations do not get
+// this tab unless they're separately marked as admin.
+export const STOCK_MANAGER_DEPARTMENTS = ['Administration & Accounts', 'Sales & Distribution']
+
+export function canManageStock(profile) {
+  return Boolean(profile?.is_admin) || STOCK_MANAGER_DEPARTMENTS.includes(profile?.department)
+}
+
+// -----------------------------------------------------------------------
 // Alerio ERP / HRM portal links
 // -----------------------------------------------------------------------
 // Little Sesame Foods' ERP and HRM/Payroll systems are separate products
