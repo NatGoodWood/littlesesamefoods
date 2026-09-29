@@ -21,22 +21,22 @@ export const directors = [
 
 export const departments = [
   {
-    name: 'Administration & Accounts',
+    name: 'Administration & HR',
     members: [
       { name: 'Eunice Larbi', role: 'Human Resources/Administrative Specialist', image: '/eunice.jpg' },
       { name: 'Caleb Nathaniel Wood', role: 'Administrative Operations Supervisor', image: '/caleb.jpg' },
-      { name: 'Hannah Edwin-Zoroaster', role: 'Accountant', image: '/hannah.jpg' },
     ],
   },
   {
-    name: 'Sales & Distribution',
+    name: 'Accounts & Sales',
     members: [
       { name: 'Amanda Addae', role: 'Account Officer', image: '/amanda.jpg' },
       { name: 'Linda Amankwah Acquah', role: 'Sales Officer', image: '/linda.jpg' },
+      { name: 'Hannah Edwin-Zoroaster', role: 'Accountant', image: '/hannah.jpg' },
     ],  
   },
   {
-    name: 'Operations & Quality Assurance',
+    name: 'Operations',
     members: [
       { name: 'Jones Lomotey Kitcher', role: 'Warehouse Supervisor', image:'/jones.jpg' },
       { name: 'Reuben Adobah Arhin', role: 'Senior Coldroom Specialist', image:'/reuben.jpg' },
