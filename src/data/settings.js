@@ -15,8 +15,8 @@ export const DEFAULT_GALLERY_URL = 'https://dennistemituro.pixieset.com/littlese
 export const STAFF_DEPARTMENTS = [
   'Directors',
   'HR/Admin',
-  'Sales & Distribution',
-  'Operations & Quality Assurance',
+  'Accounts & Sales',
+  'Operations',
 ]
 
 // -----------------------------------------------------------------------
