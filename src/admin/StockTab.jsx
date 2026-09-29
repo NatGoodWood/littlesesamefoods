@@ -11,6 +11,7 @@ export default function StockTab({ user, profile }) {
   const [items, setItems] = useState([])
   const [category, setCategory] = useState(PRODUCT_CATEGORIES[0])
   const [brand, setBrand] = useState('')
+  const [type, setType] = useState('')
   const [weight, setWeight] = useState('')
   const [saving, setSaving] = useState(false)
   const [error, setError] = useState('')
@@ -117,6 +118,20 @@ export default function StockTab({ user, profile }) {
               value={brand}
               onChange={(e) => setBrand(e.target.value)}
               placeholder="e.g. Kievico"
+              className="w-full border border-border rounded-sm px-3.5 py-2.5 text-sm text-ink focus:border-gold outline-none"
+              required
+            />
+          </div>
+          <div>
+            <label htmlFor="s-brand" className="block text-sm font-medium text-navy mb-1.5">
+              Type
+            </label>
+            <input
+              id="s-brand"
+              type="text"
+              value={type}
+              onChange={(e) => setType(e.target.value)}
+              placeholder="e.g. wings"
               className="w-full border border-border rounded-sm px-3.5 py-2.5 text-sm text-ink focus:border-gold outline-none"
               required
             />
