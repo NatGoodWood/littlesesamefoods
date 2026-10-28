@@ -2,46 +2,47 @@ export const directors = [
   {
     name: 'Mrs. Patience Wonder Enyonam Scott-Obu',
     role: 'Founder & Managing Director',
-    bio: 'Patience Wonder Enyonam Scott-Obu is a Ghanaian business executive, entrepreneur, and corporate leader with over a decade of progressive experience in executive management, business operations, logistics and customs administration, Cold chain logistics operations, financial oversight, and organizational governance within Ghana’s private sector. She currently serves as the Chief Executive Officer (CEO) and Group Chairman of Little Sesame Group, where she provides overarching strategic leadership and governance direction for the Group and its subsidiaries, including Little Sesame Foods, Kemiran Logistics, Tebmark, and El-Wonder Ladies Football Club.In her role as CEO and Group Chairman, she is responsible for setting corporate vision, driving strategic planning, overseeing operational performance, and ensuring effective coordination across diverse business units. Her leadership encompasses corporate governance, financial and administrative controls, regulatory compliance, stakeholder engagement, and executive decision-making, with a strong emphasis on sustainability, accountability, and long-term value creation. She works closely with management teams to align operational execution with strategic objectives, while maintaining oversight of risk management and compliance within regulated business environments.Patience’s professional foundation is strongly anchored in operations and compliance-driven environments, having built extensive experience in customs operations, ICUMS processing, clearing and forwarding support, logistics coordination, and administrative management earlier in her career. This operational grounding has shaped her leadership style, enabling her to combine strategic oversight with a deep practical understanding of systems, documentation, and regulatory processes critical to efficient business operations in Ghana. Her exposure to customs, logistics, and administrative functions has also strengthened her capacity to engage effectively with regulators, financial institutions, and external partners,She holds an Executive Master of Business Administration (EMBA) in Entrepreneurial Management from the University of Ghana, as well as a Bachelor of Business Administration (Management) from the Methodist University, Ghana. Her academic background reinforces her strengths in entrepreneurship, business growth strategy, organizational leadership, and operational management, equipping her to lead multi-sector enterprises within competitive and evolving markets. She is proficient in modern business and office productivity systems and applies structured, data-informed approaches to management and reporting.Patience Wonder Enyonam Batse is widely recognized for her professional discipline, ethical conduct, attention to detail, and leadership maturity. Her ability to operate confidently at both executive and operational levels positions her as a credible corporate leader for engagements involving banks, investors, regulators, development partners, and strategic collaborators. She brings a balanced leadership approach that \integrates vision, control, and execution, making her well-suited for complex, compliance-sensitive, and growth-oriented business environments',
-    image: '/patience.jpg',   // ✅ file in public folder
+    bio: 'Mrs Patience Scott-Obu is the visionary behind Little Sesame Foods, leading the company with a focus on quality, innovation, and customer satisfaction. She holds a wealth of experience in the food industry, having successfully navigated the complexities of food importation and distribution in Ghana. A degree in Management studies and an Executive MBA from the University of Ghana, Legon, equips her with the strategic insight to drive the company forward. Her leadership is characterized by a commitment to excellence and a passion for delivering high-quality food products to the Ghanaian market.',
+    image: '/team/patience-scott-obu.jpg',
   },
   {
     name: 'Nicholas Kwasi Ross',
     role: 'Finance Director',
-    bio: 'Nicholas Ross is a Chartered Accountant with over fifteen (15) years of professional experience in finance, accounting, and financial management. He has built a career centered on financial control, reporting, budgeting, and governance, with a strong emphasis on accuracy, compliance, and prudent financial decision-making suitable for regulated and corporate environments He holds a Master of Science (MSc) degree in Finance from the University of Ghana, which complements his professional accounting qualification and provides a solid academic foundation in financial analysis, corporate finance, and financial management, Mr. Ross is currently employed as the Finance Manager of Little Sesame Foods, where he is responsible for overseeing the company’s financial operations, including financial reporting, budgeting, internal controls, and supporting management with sound financial insights. His role supports financial discipline, operational efficiency, and compliance with acceptable accounting and corporate governance standards.',
-    image: '/nic.jpg',        // ✅ file in public folder
+    bio: 'Mr. Nicholas Ross is the financial director of Little Sesame Foods, bringing a wealth of experience in financial management, strategic planning and a chartered accountant. With a strong background in accounting and finance, he oversees the company\u2019s financial operations, ensuring fiscal responsibility and sustainable growth. His expertise in budgeting, financial analysis, and investment strategies plays a crucial role in guiding the company towards achieving its long-term objectives.',
+    image: '/team/nicholas-ross.jpg',
   },
   {
-    name: 'Jesse Pobi Otchere',
+    name: 'Jessie Pobi Otchere',
     role: 'Human Resource Director',
-    bio: 'Jesse Pobi Otchere is a Ghanaian Human Resource Management professional with over ten years of experience in strategic HR leadership, workforce planning, organizational development, and regulatory compliance. He has worked extensively within structured corporate environments, supporting senior management to align human capital strategies with business objectives while maintaining strong governance, accountability, and compliance standards expected for banking and financial due-diligence purposes,He is currently employed as Human Resource Manager at Little Sesame Foods in Tema, where he oversees human capital management, labor law compliance, policy development, and performance management. He works closely with executive management to support sustainable business growth, manage workforce risks, and implement effective performance, engagement, and succession initiatives.Mr. Otchere holds an MSc in Management and Human Resource Strategy from the Kwame Nkrumah University of Science and Technology and is a certified Professional in Human Resources (PHR) from the Human Resource Certification Institute, USA. He also holds a postgraduate certificate in Human Resource and Strategic Management and a Bachelor of Arts (Honours) degree from the University of Cape Coast. He is a member of the Association of Certified HRs, Ghana, and is recognized for professionalism, integrity, and confidentiality in managing sensitive corporate and employee information.',
-    image: '/jessie.jpg',     // ✅ file in public folder
+    bio: 'Mr. Jesse Pobi-Otchere is the Human Resource Director at Little Sesame Foods, where he leads the company\u2019s HR initiatives with a focus on talent acquisition, employee development, and organizational culture. With extensive experience in human resources management, he is dedicated to fostering a positive work environment that promotes employee engagement and productivity. His strategic approach to HR ensures that the company attracts and retains top talent, contributing to its overall success and growth.',
+    image: '/team/jessie-pobi-otchere.jpg',
   },
 ]
 
 export const departments = [
   {
-    name: 'Administration & HR',
+    name: 'Administration & Accounts',
     members: [
-      { name: 'Eunice Larbi', role: 'Human Resources/Administrative Specialist', image: '/eunice.jpg' },
-      { name: 'Caleb Nathaniel Wood', role: 'Administrative Operations Supervisor', image: '/caleb.jpg' },
+      { name: 'Eunice Larbi', role: 'Human Resources/Administrative Specialist', image: '/team/eunice-larbi.jpg' },
+      { name: 'Caleb Nathaniel Wood', role: 'Administrative Operations Supervisor', image: '/team/caleb-nathaniel-wood.jpg' },
+      { name: 'Hannah Edwin-Zoroaster', role: 'Accountant', image: '/team/hannah-edwin-zoroaster.jpg' },
     ],
   },
   {
-    name: 'Accounts & Sales',
+    name: 'Sales & Distribution',
     members: [
-      { name: 'Amanda Addae', role: 'Account Officer', image: '/amanda.jpg' },
-      { name: 'Linda Amankwah Acquah', role: 'Sales Officer', image: '/linda.jpg' },
-      { name: 'Hannah Edwin-Zoroaster', role: 'Accountant', image: '/hannah.jpg' },
-    ],  
+      { name: 'Amanda Addae', role: 'Account Officer', image: '/team/amanda-addae.jpg' },
+      { name: 'Linda Amankwah Acquah', role: 'Sales Officer', image: '/team/linda-amankwah-acquah.jpg' },
+    ],
   },
   {
-    name: 'Operations',
+    name: 'Operations & Quality Assurance',
     members: [
-      { name: 'Jones Lomotey Kitcher', role: 'Warehouse Supervisor', image:'/jones.jpg' },
-      { name: 'Reuben Adobah Arhin', role: 'Senior Coldroom Specialist', image:'/reuben.jpg' },
-      { name: 'Edwin Kweku Aniagyei', role: 'Coldroom Specialist', image:'/edwin.jpg' },
-      { name: 'Michael Oteng Ofosu', role: 'Forklift Operator', image:'/michael.jpg'}, 
+      { name: 'Jones Lomotey Kitcher', role: 'Warehouse Supervisor', image: '/team/jones-lomotey-kitcher.jpg' },
+      { name: 'Reuben Adobah Arhin', role: 'Senior Coldroom Specialist', image: '/team/reuben-adobah-arhin.jpg' },
+      { name: 'Edwin Kweku Aniagyei', role: 'Coldroom Specialist', image: '/team/edwin-kweku-aniagyei.jpg' },
+      { name: 'Jacob Nartey', role: 'Coldroom Specialist', image: '/team/jacob-nartey.jpg' },
+      { name: 'Michael Oteng Ofosu', role: 'Forklift Operator', image: '/team/michael-oteng-ofosu.jpg' },
     ],
   },
 ]

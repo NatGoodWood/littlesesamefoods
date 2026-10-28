@@ -68,7 +68,7 @@ export default function NoticeBoardTab({ user, profile }) {
 
   return (
     <div className="space-y-6">
-      <section className="bg-ice border border-border rounded-sm p-6 md:p-8">
+      <section className="bg-ice border border-border rounded-xl p-6 md:p-8">
         <h2 className="font-display text-lg font-semibold text-navy mb-1">Post a Notice</h2>
         <p className="text-steel text-sm mb-6">
           Visible to every staff member on their Notice Board tab, as soon as you post it.
@@ -79,7 +79,7 @@ export default function NoticeBoardTab({ user, profile }) {
             value={title}
             onChange={(e) => setTitle(e.target.value)}
             placeholder="Notice title"
-            className="w-full border border-border rounded-sm px-3.5 py-2.5 text-sm text-ink focus:border-gold outline-none"
+            className="w-full border border-border rounded-xl px-3.5 py-2.5 text-sm text-ink focus:border-gold outline-none"
             required
           />
           <textarea
@@ -87,7 +87,7 @@ export default function NoticeBoardTab({ user, profile }) {
             onChange={(e) => setBody(e.target.value)}
             placeholder="Write your notice…"
             rows={4}
-            className="w-full border border-border rounded-sm px-3.5 py-2.5 text-sm text-ink focus:border-gold outline-none resize-none"
+            className="w-full border border-border rounded-xl px-3.5 py-2.5 text-sm text-ink focus:border-gold outline-none resize-none"
             required
           />
           {error && <p className="text-sm text-red-600">{error}</p>}
@@ -99,12 +99,12 @@ export default function NoticeBoardTab({ user, profile }) {
 
       <section className="space-y-4">
         {notices.length === 0 ? (
-          <div className="bg-mist border border-border rounded-sm p-8 text-center text-steel text-sm">
+          <div className="bg-mist border border-border rounded-xl p-8 text-center text-steel text-sm">
             No notices yet — be the first to post one.
           </div>
         ) : (
           notices.map((n) => (
-            <div key={n.id} className="bg-ice border border-border rounded-sm p-6">
+            <div key={n.id} className="bg-ice border border-border rounded-xl p-6">
               <div className="flex items-start justify-between gap-4 mb-2">
                 <h3 className="font-display font-semibold text-navy">{n.title}</h3>
                 <span className="text-xs text-steel shrink-0">{formatDate(n.created_at)}</span>

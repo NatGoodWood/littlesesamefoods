@@ -41,7 +41,7 @@ export default function ProfileSetup({ user, onCreated }) {
 
   return (
     <div className="min-h-[70vh] flex items-center justify-center bg-mist px-6 py-12">
-      <div className="w-full max-w-md bg-ice border border-border rounded-sm p-8 md:p-10">
+      <div className="w-full max-w-md bg-ice border border-border rounded-xl p-8 md:p-10">
         <div className="flex items-center gap-3 mb-2">
           <IconShield className="w-6 h-6 text-navy" />
           <p className="font-display font-semibold text-navy">Welcome — let's set up your profile</p>
@@ -60,7 +60,7 @@ export default function ProfileSetup({ user, onCreated }) {
               type="text"
               value={name}
               onChange={(e) => setName(e.target.value)}
-              className="w-full border border-border rounded-sm px-3.5 py-2.5 text-sm text-ink focus:border-gold outline-none"
+              className="w-full border border-border rounded-xl px-3.5 py-2.5 text-sm text-ink focus:border-gold outline-none"
               required
             />
           </div>
@@ -73,7 +73,7 @@ export default function ProfileSetup({ user, onCreated }) {
               id="department"
               value={department}
               onChange={(e) => setDepartment(e.target.value)}
-              className="w-full border border-border rounded-sm px-3.5 py-2.5 text-sm text-ink focus:border-gold outline-none bg-ice"
+              className="w-full border border-border rounded-xl px-3.5 py-2.5 text-sm text-ink focus:border-gold outline-none bg-ice"
             >
               {STAFF_DEPARTMENTS.map((d) => (
                 <option key={d} value={d}>
@@ -93,7 +93,7 @@ export default function ProfileSetup({ user, onCreated }) {
               placeholder="e.g. Warehouse Supervisor"
               value={role}
               onChange={(e) => setRole(e.target.value)}
-              className="w-full border border-border rounded-sm px-3.5 py-2.5 text-sm text-ink focus:border-gold outline-none"
+              className="w-full border border-border rounded-xl px-3.5 py-2.5 text-sm text-ink focus:border-gold outline-none"
               required
             />
           </div>

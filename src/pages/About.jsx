@@ -114,10 +114,202 @@
 //     </div>
 //   )
 // }
+// import { NavLink } from 'react-router-dom'
+// import { SectionHeading, CTABanner, IconBadge, PersonPhoto } from '../components/UI.jsx'
+// import { IconGlobe, IconThermometer, IconShield, IconTruck, IconArrow } from '../components/Icons.jsx'
+// import { directors } from '../data/content.js'
+
+// const process = [
+//   {
+//     n: '01',
+//     title: 'Sourcing',
+//     desc: 'We work directly with vetted processors and exporters across Europe, the Americas and other regions to select products that meet our quality benchmarks.',
+//   },
+//   {
+//     n: '02',
+//     title: 'Cold-chain logistics',
+//     desc: 'Every shipment moves in temperature-controlled containers, with handling monitored from vessel to our warehouse facilities.',
+//   },
+//   {
+//     n: '03',
+//     title: 'Quality control',
+//     desc: 'Incoming stock is inspected against food safety and documentation standards before it clears for distribution.',
+//   },
+//   {
+//     n: '04',
+//     title: 'Distribution',
+//     desc: 'Products reach retailers, food service partners and distributors while cold-chain integrity is maintained end to end.',
+//   },
+// ]
+
+// const values = [
+//   { icon: IconThermometer, title: 'Importation of frozen food products', desc: '' },
+//   { icon: IconShield, title: 'Cold storage and temperature-controlled warehousing', desc: '' },
+//   { icon: IconGlobe, title: 'Quality assurance and food safety management', desc: '' },
+//   { icon: IconTruck, title: 'Frozen food distribution and logistics', desc: '' },
+// ]
+
+ 
+
+// export default function About() {
+//   return (
+//     <div>
+//       {/* Hero */}
+//       <section className="bg-ice">
+//         <div className="container-page pt-16 md:pt-24 pb-12">
+//           <p className="kicker">How It Started</p>
+//           <h1 className="mt-3 text-4xl md:text-5xl lg:text-[3.25rem] font-semibold text-navy leading-[1.1] max-w-3xl">
+//             Built on cold-chain discipline and global relationships.
+//           </h1>
+//           <p className="mt-6 text-steel text-lg leading-relaxed max-w-xl">
+//              As the foundational Company of the Little Sesame Group, Little Sesame Foods is the expert in cold chain logistics and frozen food distribution. We are the crucial link that guarantees quality and freshness from source to destination, ensuring tha customers receive products in perfect condition. Our deep-rooted belief that food nourishes people and builds communities drives our commitment to reliability. We dont just move goods; we protect reputatons and sustain trust. Through disciplined management and a focus on operatonal execellence, we have become the trusted backbone for distribution in Ghana, weathering marlet challenges to provide unwavering service. Our mission is to be the most dependable partner in the frozen food supply chain, ensuring that every product we deliver meets the highest standards of safety and quality.
+//           </p>
+//         </div>
+
+//         {/* Full-width feature image */}
+//         <div className="container-page pb-16 md:pb-20">
+//           <div className="rounded-sm overflow-hidden">
+//             <img
+//               src="/izako.jpeg"
+//               alt="[Coldstore Image]"
+//               className="w-full h-[280px] md:h-[440px] object-cover"
+//               loading="lazy"
+//             />
+//           </div>
+//         </div>
+//       </section>
+
+//       {/* Mission */}
+//       <section className="bg-mist">
+//         <div className="container-page py-16 md:py-20">
+//           <SectionHeading
+//             align="center"
+//             title="Our Mission"
+//             lede="To provide a reliable supply of frozen food products to the Ghanaian market, ensuring that our customers have access to safe, high-quality, and diverse food options. We are dedicated to maintaining the integrity of our cold chain logistics, fostering strong relationships with our suppliers and customers, and contributing positively to the communities we serve."
+//           />
+//         </div>
+//       </section>
+
+//       {/* Core values — clean icon-badge grid */}
+//       <section className="section bg-ice">
+//         <div className="container-page">
+//           <SectionHeading align="center" title="Our Core Activities" />
+
+//           <div className="mt-14 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10">
+//             {values.map((v) => (
+//               <div key={v.title} className="text-center flex flex-col items-center">
+//                 <IconBadge icon={v.icon} className="bg-gold/10" />
+//                 <h3 className="mt-5 text-lg font-semibold text-navy">{v.title}</h3>
+//                 <p className="mt-2 text-steel text-sm leading-relaxed max-w-[220px]">{v.desc}</p>
+//               </div>
+//             ))}
+//           </div>
+//         </div>
+//       </section>
+
+//       {/* Story + Group affiliation */}
+//       <section className="section bg-mist">
+//         <div className="container-page grid md:grid-cols-2 gap-16 items-start">
+//           <div>
+//             <p className="kicker">Our story</p>
+//             <h2 className="mt-3 text-3xl font-semibold text-navy leading-tight">
+//               The Humble beginning
+//             </h2>
+//             <p className="mt-5 text-steel leading-relaxed">
+//               In the year 2020, Little Sesame Foods was established with a clear mission: to provide Ghana with a reliable source of premium frozen foods. Recognizing the growing demand for high-quality frozen products, we set out to create a company that would not only meet this need but also set new standards in cold-chain logistics and food safety.
+//             </p>
+//             <p className="mt-4 text-steel leading-relaxed">
+//               Today, we import a wide range of frozen goods poultry, meat, seafood, vegetables and
+//               more sourced from processors across Europe, the Americas and other regions, and
+//               distributed through a network built on consistency and trust.
+//             </p>
+//           </div>
+
+//           <div className="bg-ice p-8 md:p-10 rounded-sm border border-border">
+//             <p className="kicker">Part of a larger group</p>
+//             <h3 className="mt-3 text-2xl font-semibold text-navy leading-tight">Little Sesame Group</h3>
+//             <p className="mt-4 text-steel leading-relaxed">
+//               Little Sesamе Group is more than a collecton of companies; we are a strategically connected ecosystem powering commerce and enriching communities across Ghana. From humble beginnings, our vision has grown into a dynamic network that feeds, moves and inspires. Our strenght lies in synergy. By mastering critical links in the supply chain, from importation and production to logistics and distribution, we ensure quality, reliability and value from source to destination. But our ambition extends beyond business.We are commited to building future leaders, investing in our communities, and creating a seamlessly connected future for Ghana.
+//             </p>
+//             <p className="mt-4 text-steel leading-relaxed">
+//               The relationship gives our partners added confidence: behind every shipment is not just
+//               a single company, but the standards and stability of an established group.
+//             </p>
+//           </div>
+//         </div>
+//       </section>
+
+//       {/* Process */}
+//       <section className="section bg-navy">
+//         <div className="container-page">
+//           <SectionHeading
+//             dark
+//             title="How our products reach you"
+//             lede="Four key stages to ensure quality and freshness from source to destination."
+//           />
+
+//           <div className="mt-14 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
+//             {process.map((p) => (
+//               <div key={p.n} className="border-t border-ice/15 pt-6">
+//                 <span className="font-display text-sm text-gold">{p.n}</span>
+//                 <h3 className="mt-3 text-lg font-semibold text-ice">{p.title}</h3>
+//                 <p className="mt-2.5 text-ice/60 text-sm leading-relaxed">{p.desc}</p>
+//               </div>
+//             ))}
+//           </div>
+//         </div>
+//       </section>
+
+//       {/* Team preview */}
+// <section className="section bg-ice">
+//   <div className="container-page">
+//     <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-14">
+//       <SectionHeading 
+//         title="Founder's Message" 
+//         lede="Collaboration is key; together we can acheive more than we ever could alone, Let your passion drive you, and your purpose will. Every Successful person was once an amateur who refused to give up, You are not just part of a company you are part of a movement. - Mrs Patience Enyonam Wonder Scott-Obu " 
+//       />
+//       <NavLink 
+//         to="/team" 
+//         className="link-underline text-navy font-display font-semibold text-sm inline-flex items-center gap-2 shrink-0"
+//       >
+//         Meet the full team <IconArrow className="w-4 h-4" />
+//       </NavLink>
+//     </div>
+
+//     <div className="grid grid-cols-1 sm:grid-cols-1 gap-x-8 gap-y-12">
+//       {/* Only show the first director */}
+//       <div className="text-center flex flex-col items-center">
+//         <PersonPhoto 
+//           name={directors[0].name} 
+//           image={directors[0].image} 
+//           size="lg" 
+//         />
+//         <h3 className="mt-5 text-base font-semibold text-navy leading-snug">
+//           {directors[0].name}
+//         </h3>
+//         <p className="mt-1 text-gold-dark text-sm font-medium">
+//           {directors[0].role}
+//         </p>
+//       </div>
+//     </div>
+//   </div>
+// </section>
+
+
+//       <CTABanner />
+//     </div>
+//   )
+// }
 import { NavLink } from 'react-router-dom'
-import { SectionHeading, CTABanner, IconBadge, PersonPhoto } from '../components/UI.jsx'
+import { SectionHeading, CTABanner, IconBadge, PersonPhoto, Reveal, ImageWithFallback } from '../components/UI.jsx'
 import { IconGlobe, IconThermometer, IconShield, IconTruck, IconArrow } from '../components/Icons.jsx'
 import { directors } from '../data/content.js'
+import { SLOT_ABOUT } from '../data/settings.js'
+import { useSiteImages, firstImageUrl } from '../data/siteHooks.js'
+
+// Used until a photo is uploaded from the Staff Portal (Site Images -> About page).
+const DEFAULT_ABOUT_IMAGE =
+  'https://images.pexels.com/photos/4487382/pexels-photo-4487382.jpeg?auto=compress&cs=tinysrgb&w=1600&h=800&fit=crop'
 
 const process = [
   {
@@ -143,37 +335,34 @@ const process = [
 ]
 
 const values = [
-  { icon: IconThermometer, title: 'Importation of frozen food products', desc: '' },
-  { icon: IconShield, title: 'Cold storage and temperature-controlled warehousing', desc: '' },
-  { icon: IconGlobe, title: 'Quality assurance and food safety management', desc: '' },
-  { icon: IconTruck, title: 'Frozen food distribution and logistics', desc: '' },
+  { icon: IconThermometer, title: 'Reliability', desc: 'Consistent supply and predictable delivery schedules our partners can plan around.' },
+  { icon: IconShield, title: 'Integrity', desc: 'Transparent sourcing and honest handling of every product we bring in.' },
+  { icon: IconGlobe, title: 'Global standard', desc: 'Products sourced and handled to standards recognised across international markets.' },
+  { icon: IconTruck, title: 'Efficiency', desc: 'Lean logistics that keep costs competitive without cutting corners on quality.' },
 ]
 
- 
-
-export default function About() {
+export function AboutView({ heroImage }) {
   return (
     <div>
       {/* Hero */}
       <section className="bg-ice">
-        <div className="container-page pt-16 md:pt-24 pb-12">
+        <div className="container-page pb-12 pt-16 md:pt-24">
           <p className="kicker">How It Started</p>
-          <h1 className="mt-3 text-4xl md:text-5xl lg:text-[3.25rem] font-semibold text-navy leading-[1.1] max-w-3xl">
-            Built on cold-chain discipline and global relationships.
+          <h1 className="mt-3 max-w-3xl text-4xl font-semibold leading-[1.05] tracking-tight text-navy md:text-6xl">
+            Our dream is to power reliable cold-chain import.
           </h1>
-          <p className="mt-6 text-steel text-lg leading-relaxed max-w-xl">
-             As the foundational Company of the Little Sesame Group, Little Sesame Foods is the expert in cold chain logistics and frozen food distribution. We are the crucial link that guarantees quality and freshness from source to destination, ensuring tha customers receive products in perfect condition. Our deep-rooted belief that food nourishes people and builds communities drives our commitment to reliability. We dont just move goods; we protect reputatons and sustain trust. Through disciplined management and a focus on operatonal execellence, we have become the trusted backbone for distribution in Ghana, weathering marlet challenges to provide unwavering service. Our mission is to be the most dependable partner in the frozen food supply chain, ensuring that every product we deliver meets the highest standards of safety and quality.
+          <p className="mt-6 max-w-xl text-lg leading-relaxed text-steel">
+            Little Sesame Foods was founded to bring dependable, quality frozen food products into the
+            market sourced responsibly, handled correctly, and delivered on time, every time.
           </p>
         </div>
 
-        {/* Full-width feature image */}
-        <div className="container-page pb-16 md:pb-20">
-          <div className="rounded-sm overflow-hidden">
-            <img
-              src=""
-              alt="[Coldstore Image]"
-              className="w-full h-[280px] md:h-[440px] object-cover"
-              loading="lazy"
+        <div className="container-page pb-16 md:pb-24">
+          <div className="overflow-hidden rounded-[2rem] shadow-lift">
+            <ImageWithFallback
+              src="./izako.jpeg"
+              alt="Little Sesame Foods warehouse operations"
+              className="h-[280px] w-full object-cover md:h-[460px]"
             />
           </div>
         </div>
@@ -182,26 +371,34 @@ export default function About() {
       {/* Mission */}
       <section className="bg-mist">
         <div className="container-page py-16 md:py-20">
-          <SectionHeading
-            align="center"
-            title="Our Mission"
-            lede="To provide a reliable supply of frozen food products to the Ghanaian market, ensuring that our customers have access to safe, high-quality, and diverse food options. We are dedicated to maintaining the integrity of our cold chain logistics, fostering strong relationships with our suppliers and customers, and contributing positively to the communities we serve."
-          />
+          <Reveal>
+            <SectionHeading
+              align="center"
+              title="Our Mission"
+              lede="We strive to bring dependable, quality frozen food to the Ghanaian market driving consistency and trust for every business we supply."
+            />
+          </Reveal>
         </div>
       </section>
 
-      {/* Core values — clean icon-badge grid */}
+      {/* Core values */}
       <section className="section bg-ice">
         <div className="container-page">
-          <SectionHeading align="center" title="Our Core Activities" />
+          <Reveal>
+            <SectionHeading align="center" title="Our Core Values" />
+          </Reveal>
 
-          <div className="mt-14 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10">
-            {values.map((v) => (
-              <div key={v.title} className="text-center flex flex-col items-center">
-                <IconBadge icon={v.icon} className="bg-gold/10" />
-                <h3 className="mt-5 text-lg font-semibold text-navy">{v.title}</h3>
-                <p className="mt-2 text-steel text-sm leading-relaxed max-w-[220px]">{v.desc}</p>
-              </div>
+          <div className="mt-14 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
+            {values.map((v, i) => (
+              <Reveal key={v.title} delay={i * 80}>
+                <div className="h-full rounded-3xl border border-border bg-ice p-7 text-center shadow-soft">
+                  <div className="flex justify-center">
+                    <IconBadge icon={v.icon} />
+                  </div>
+                  <h3 className="mt-5 text-lg font-semibold text-navy">{v.title}</h3>
+                  <p className="mt-2 text-sm leading-relaxed text-steel">{v.desc}</p>
+                </div>
+              </Reveal>
             ))}
           </div>
         </div>
@@ -209,94 +406,100 @@ export default function About() {
 
       {/* Story + Group affiliation */}
       <section className="section bg-mist">
-        <div className="container-page grid md:grid-cols-2 gap-16 items-start">
-          <div>
+        <div className="container-page grid items-start gap-12 md:grid-cols-2 md:gap-16">
+          <Reveal>
             <p className="kicker">Our story</p>
-            <h2 className="mt-3 text-3xl font-semibold text-navy leading-tight">
-              The Humble beginning
+            <h2 className="mt-3 text-3xl font-semibold leading-tight tracking-tight text-navy">
+              From a single warehouse to a trusted import partner
             </h2>
-            <p className="mt-5 text-steel leading-relaxed">
-              In the year 2020, Little Sesame Foods was established with a clear mission: to provide Ghana with a reliable source of premium frozen foods. Recognizing the growing demand for high-quality frozen products, we set out to create a company that would not only meet this need but also set new standards in cold-chain logistics and food safety.
+            <p className="mt-5 leading-relaxed text-steel">
+              Little Sesame Foods began with a simple observation: businesses across the region needed
+              a dependable source of quality frozen products, backed by proper cold-chain handling
+              rather than guesswork. What started as a modest import operation has grown into a
+              distribution business trusted by retailers and food service partners.
             </p>
-            <p className="mt-4 text-steel leading-relaxed">
-              Today, we import a wide range of frozen goods poultry, meat, seafood, vegetables and
+            <p className="mt-4 leading-relaxed text-steel">
+              Today, we import a wide range of frozen goods — poultry, meat, seafood, vegetables and
               more sourced from processors across Europe, the Americas and other regions, and
               distributed through a network built on consistency and trust.
             </p>
-          </div>
+          </Reveal>
 
-          <div className="bg-ice p-8 md:p-10 rounded-sm border border-border">
-            <p className="kicker">Part of a larger group</p>
-            <h3 className="mt-3 text-2xl font-semibold text-navy leading-tight">Little Sesame Group</h3>
-            <p className="mt-4 text-steel leading-relaxed">
-              Little Sesamе Group is more than a collecton of companies; we are a strategically connected ecosystem powering commerce and enriching communities across Ghana. From humble beginnings, our vision has grown into a dynamic network that feeds, moves and inspires. Our strenght lies in synergy. By mastering critical links in the supply chain, from importation and production to logistics and distribution, we ensure quality, reliability and value from source to destination. But our ambition extends beyond business.We are commited to building future leaders, investing in our communities, and creating a seamlessly connected future for Ghana.
-            </p>
-            <p className="mt-4 text-steel leading-relaxed">
-              The relationship gives our partners added confidence: behind every shipment is not just
-              a single company, but the standards and stability of an established group.
-            </p>
-          </div>
+          <Reveal delay={100}>
+            <div className="rounded-3xl border border-border bg-ice p-8 shadow-soft md:p-10">
+              <p className="kicker">Part of a larger group</p>
+              <h3 className="mt-3 text-2xl font-semibold leading-tight text-navy">Little Sesame Group</h3>
+              <p className="mt-4 leading-relaxed text-steel">
+                Little Sesame Foods operates as a subsidiary of Little Sesame Group, drawing on the
+                group's wider resources, governance and industry relationships. This affiliation
+                strengthens our sourcing capability while keeping day-to-day operations focused
+                specifically on frozen food import and distribution.
+              </p>
+              <p className="mt-4 leading-relaxed text-steel">
+                The relationship gives our partners added confidence: behind every shipment is not just
+                a single company, but the standards and stability of an established group.
+              </p>
+            </div>
+          </Reveal>
         </div>
       </section>
 
       {/* Process */}
-      <section className="section bg-navy">
+      <section className="section bg-navy bg-frost">
         <div className="container-page">
-          <SectionHeading
-            dark
-            title="How our products reach you"
-            lede="Four key stages to ensure quality and freshness from source to destination."
-          />
+          <Reveal>
+            <SectionHeading
+              dark
+              title="How a shipment reaches you"
+              lede="Four stages stand between an order placed with an overseas processor and a pallet arriving at your door."
+            />
+          </Reveal>
 
-          <div className="mt-14 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
-            {process.map((p) => (
-              <div key={p.n} className="border-t border-ice/15 pt-6">
-                <span className="font-display text-sm text-gold">{p.n}</span>
-                <h3 className="mt-3 text-lg font-semibold text-ice">{p.title}</h3>
-                <p className="mt-2.5 text-ice/60 text-sm leading-relaxed">{p.desc}</p>
-              </div>
+          <div className="mt-14 grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-4">
+            {process.map((p, i) => (
+              <Reveal key={p.n} delay={i * 80}>
+                <div className="h-full rounded-3xl border border-ice/10 bg-ice/5 p-7 backdrop-blur">
+                  <span className="font-display text-sm text-gold">{p.n}</span>
+                  <h3 className="mt-3 text-lg font-semibold text-ice">{p.title}</h3>
+                  <p className="mt-2.5 text-sm leading-relaxed text-ice/65">{p.desc}</p>
+                </div>
+              </Reveal>
             ))}
           </div>
         </div>
       </section>
 
       {/* Team preview */}
-<section className="section bg-ice">
-  <div className="container-page">
-    <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-14">
-      <SectionHeading 
-        title="Founder's Message" 
-        lede="Collaboration is key; together we can acheive more than we ever could alone, Let your passion drive you, and your purpose will. Every Successful person was once an amateur who refused to give up, You are not just part of a company you are part of a movement. - Mrs Patience Enyonam Wonder Scott-Obu " 
-      />
-      <NavLink 
-        to="/team" 
-        className="link-underline text-navy font-display font-semibold text-sm inline-flex items-center gap-2 shrink-0"
-      >
-        Meet the full team <IconArrow className="w-4 h-4" />
-      </NavLink>
-    </div>
+      <section className="section bg-ice">
+        <div className="container-page">
+          <Reveal className="mb-14 flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
+            <SectionHeading title="Team" lede="The leadership guiding Little Sesame Foods day to day." />
+            <NavLink
+              to="/team"
+              className="link-underline inline-flex shrink-0 items-center gap-2 font-display text-sm font-semibold text-navy"
+            >
+              Meet the full team <IconArrow className="h-4 w-4" />
+            </NavLink>
+          </Reveal>
 
-    <div className="grid grid-cols-1 sm:grid-cols-1 gap-x-8 gap-y-12">
-      {/* Only show the first director */}
-      <div className="text-center flex flex-col items-center">
-        <PersonPhoto 
-          name={directors[0].name} 
-          image={directors[0].image} 
-          size="lg" 
-        />
-        <h3 className="mt-5 text-base font-semibold text-navy leading-snug">
-          {directors[0].name}
-        </h3>
-        <p className="mt-1 text-gold-dark text-sm font-medium">
-          {directors[0].role}
-        </p>
-      </div>
-    </div>
-  </div>
-</section>
-
+          <div className="grid grid-cols-2 gap-x-8 gap-y-12 sm:grid-cols-3">
+            {directors.map((d) => (
+              <div key={d.name} className="flex flex-col items-center text-center">
+                <PersonPhoto name={d.name} image={d.image} size="lg" />
+                <h3 className="mt-5 text-base font-semibold leading-snug text-navy">{d.name}</h3>
+                <p className="mt-1 text-sm font-medium text-gold-dark">{d.role}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
 
       <CTABanner />
     </div>
   )
+}
+
+export default function About() {
+  const { images } = useSiteImages([SLOT_ABOUT])
+  return <AboutView heroImage={firstImageUrl(images, SLOT_ABOUT) || DEFAULT_ABOUT_IMAGE} />
 }

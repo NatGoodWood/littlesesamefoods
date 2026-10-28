@@ -23,7 +23,7 @@ export default function WebsiteAdminTab() {
   return (
     <div className="space-y-12">
       {/* Gallery settings */}
-      <section className="bg-ice border border-border rounded-sm p-6 md:p-8">
+      <section className="bg-ice border border-border rounded-xl p-6 md:p-8">
         <div className="flex items-center gap-3 mb-1">
           <IconGlobe className="w-5 h-5 text-gold-dark" />
           <h2 className="font-display text-lg font-semibold text-navy">Gallery link</h2>
@@ -38,7 +38,7 @@ export default function WebsiteAdminTab() {
             value={urlInput}
             onChange={(e) => setUrlInput(e.target.value)}
             placeholder="https://photos.app.goo.gl/..."
-            className="flex-1 border border-border rounded-sm px-3.5 py-2.5 text-sm text-ink focus:border-gold outline-none"
+            className="flex-1 border border-border rounded-xl px-3.5 py-2.5 text-sm text-ink focus:border-gold outline-none"
             required
           />
           <button type="submit" className="btn-primary !py-2.5 shrink-0">
@@ -49,7 +49,7 @@ export default function WebsiteAdminTab() {
       </section>
 
       {/* Directors */}
-      <section className="bg-ice border border-border rounded-sm p-6 md:p-8">
+      <section className="bg-ice border border-border rounded-xl p-6 md:p-8">
         <h2 className="font-display text-lg font-semibold text-navy mb-1">Directors</h2>
         <p className="text-steel text-sm mb-6">
           Shown on the Directors &amp; Team page. To change names, roles or bios, update{' '}
@@ -70,7 +70,7 @@ export default function WebsiteAdminTab() {
       </section>
 
       {/* Team */}
-      <section className="bg-ice border border-border rounded-sm p-6 md:p-8">
+      <section className="bg-ice border border-border rounded-xl p-6 md:p-8">
         <h2 className="font-display text-lg font-semibold text-navy mb-1">Team</h2>
         <p className="text-steel text-sm mb-6">Grouped by department, as shown publicly.</p>
         <div className="space-y-8">
@@ -96,7 +96,7 @@ export default function WebsiteAdminTab() {
       </section>
 
       {/* Company info */}
-      <section className="bg-ice border border-border rounded-sm p-6 md:p-8">
+      <section className="bg-ice border border-border rounded-xl p-6 md:p-8">
         <h2 className="font-display text-lg font-semibold text-navy mb-1">Company info</h2>
         <p className="text-steel text-sm mb-6">Shown in the site footer.</p>
         <dl className="grid sm:grid-cols-3 gap-6 text-sm">

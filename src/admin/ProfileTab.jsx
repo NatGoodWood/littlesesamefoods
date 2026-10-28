@@ -80,7 +80,7 @@ export default function ProfileTab({ user, profile, onUpdate }) {
 
   return (
     <div className="space-y-6">
-      <section className="bg-ice border border-border rounded-sm p-6 md:p-8">
+      <section className="bg-ice border border-border rounded-xl p-6 md:p-8">
         <h2 className="font-display text-lg font-semibold text-navy mb-6">My Profile</h2>
 
         <div className="flex items-center gap-5 mb-8">
@@ -110,7 +110,7 @@ export default function ProfileTab({ user, profile, onUpdate }) {
               type="text"
               value={name}
               onChange={(e) => setName(e.target.value)}
-              className="w-full border border-border rounded-sm px-3.5 py-2.5 text-sm text-ink focus:border-gold outline-none"
+              className="w-full border border-border rounded-xl px-3.5 py-2.5 text-sm text-ink focus:border-gold outline-none"
               required
             />
           </div>
@@ -122,7 +122,7 @@ export default function ProfileTab({ user, profile, onUpdate }) {
               id="p-department"
               value={department}
               onChange={(e) => setDepartment(e.target.value)}
-              className="w-full border border-border rounded-sm px-3.5 py-2.5 text-sm text-ink focus:border-gold outline-none bg-ice"
+              className="w-full border border-border rounded-xl px-3.5 py-2.5 text-sm text-ink focus:border-gold outline-none bg-ice"
             >
               {STAFF_DEPARTMENTS.map((d) => (
                 <option key={d} value={d}>
@@ -140,7 +140,7 @@ export default function ProfileTab({ user, profile, onUpdate }) {
               type="text"
               value={role}
               onChange={(e) => setRole(e.target.value)}
-              className="w-full border border-border rounded-sm px-3.5 py-2.5 text-sm text-ink focus:border-gold outline-none"
+              className="w-full border border-border rounded-xl px-3.5 py-2.5 text-sm text-ink focus:border-gold outline-none"
               required
             />
           </div>
@@ -154,7 +154,7 @@ export default function ProfileTab({ user, profile, onUpdate }) {
         </form>
       </section>
 
-      <section className="bg-mist border border-border rounded-sm p-6 md:p-8">
+      <section className="bg-mist border border-border rounded-xl p-6 md:p-8">
         <p className="text-steel text-sm leading-relaxed">
           <span className="font-medium text-navy">Signed in as </span>
           {user.email}

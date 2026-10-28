@@ -113,7 +113,7 @@ export default function MessagesTab({ user, profile }) {
   }
 
   return (
-    <div className="bg-ice border border-border rounded-sm overflow-hidden grid md:grid-cols-[260px_1fr] min-h-[560px]">
+    <div className="bg-ice border border-border rounded-xl overflow-hidden grid md:grid-cols-[260px_1fr] min-h-[560px]">
       {/* Colleague list */}
       <div className={`border-r border-border ${activeColleague ? 'hidden md:block' : ''}`}>
         <div className="p-4 border-b border-border">
@@ -178,7 +178,7 @@ export default function MessagesTab({ user, profile }) {
                   return (
                     <div key={m.id} className={`flex ${mine ? 'justify-end' : 'justify-start'}`}>
                       <div
-                        className={`max-w-[75%] rounded-sm px-3.5 py-2.5 text-sm ${
+                        className={`max-w-[75%] rounded-xl px-3.5 py-2.5 text-sm ${
                           mine ? 'bg-navy text-ice' : 'bg-mist text-ink'
                         }`}
                       >
@@ -200,7 +200,7 @@ export default function MessagesTab({ user, profile }) {
                 value={text}
                 onChange={(e) => setText(e.target.value)}
                 placeholder={`Message ${activeColleague.name.split(' ')[0]}…`}
-                className="flex-1 border border-border rounded-sm px-3.5 py-2.5 text-sm text-ink focus:border-gold outline-none"
+                className="flex-1 border border-border rounded-xl px-3.5 py-2.5 text-sm text-ink focus:border-gold outline-none"
               />
               <button type="submit" disabled={sending || !text.trim()} className="btn-primary !py-2.5 shrink-0 disabled:opacity-60">
                 Send <IconArrow />

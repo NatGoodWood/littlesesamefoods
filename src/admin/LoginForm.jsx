@@ -43,7 +43,7 @@ export default function LoginForm() {
 
   return (
     <div className="min-h-[70vh] flex items-center justify-center bg-mist px-6">
-      <div className="w-full max-w-sm bg-ice border border-border rounded-sm p-8 md:p-10">
+      <div className="w-full max-w-sm bg-ice border border-border rounded-xl p-8 md:p-10">
         <div className="flex items-center gap-3 mb-2">
           <IconShield className="w-6 h-6 text-navy" />
           <p className="font-display font-semibold text-navy">Staff Portal</p>
@@ -64,7 +64,7 @@ export default function LoginForm() {
               autoComplete="username"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
-              className="w-full border border-border rounded-sm px-3.5 py-2.5 text-sm text-ink focus:border-gold outline-none"
+              className="w-full border border-border rounded-xl px-3.5 py-2.5 text-sm text-ink focus:border-gold outline-none"
               required
             />
           </div>
@@ -78,7 +78,7 @@ export default function LoginForm() {
               autoComplete="current-password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
-              className="w-full border border-border rounded-sm px-3.5 py-2.5 text-sm text-ink focus:border-gold outline-none"
+              className="w-full border border-border rounded-xl px-3.5 py-2.5 text-sm text-ink focus:border-gold outline-none"
               required
             />
           </div>

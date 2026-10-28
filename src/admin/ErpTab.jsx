@@ -8,8 +8,10 @@ import {
 import { IconArrow, IconExternal, IconLayers } from '../components/Icons.jsx'
 
 function AlerioSignIn({ label, urlKey, defaultUrl }) {
-  const [urlInput, setUrlInput] = useState('')
-  const [activeUrl, setActiveUrl] = useState('')
+  // Start from the default so the embedded frame never gets an empty address;
+  // the effect below swaps in a link saved in this browser, if there is one.
+  const [urlInput, setUrlInput] = useState(defaultUrl)
+  const [activeUrl, setActiveUrl] = useState(defaultUrl)
   const [savedMessage, setSavedMessage] = useState('')
   const [iframeKey, setIframeKey] = useState(0)
 
@@ -31,7 +33,7 @@ function AlerioSignIn({ label, urlKey, defaultUrl }) {
 
   return (
     <div className="space-y-6">
-      <section className="bg-ice border border-border rounded-sm p-6 md:p-8">
+      <section className="bg-ice border border-border rounded-xl p-6 md:p-8">
         <div className="flex items-center gap-3 mb-1">
           <IconLayers className="w-5 h-5 text-gold-dark" />
           <h2 className="font-display text-lg font-semibold text-navy">{label} link</h2>
@@ -45,7 +47,7 @@ function AlerioSignIn({ label, urlKey, defaultUrl }) {
             value={urlInput}
             onChange={(e) => setUrlInput(e.target.value)}
             placeholder="https://..."
-            className="flex-1 border border-border rounded-sm px-3.5 py-2.5 text-sm text-ink focus:border-gold outline-none"
+            className="flex-1 border border-border rounded-xl px-3.5 py-2.5 text-sm text-ink focus:border-gold outline-none"
             required
           />
           <button type="submit" className="btn-primary !py-2.5 shrink-0">
@@ -55,14 +57,14 @@ function AlerioSignIn({ label, urlKey, defaultUrl }) {
         {savedMessage && <p className="mt-3 text-sm text-brandgreen">{savedMessage}</p>}
       </section>
 
-      <section className="bg-ice border border-border rounded-sm p-6 md:p-8">
+      <section className="bg-ice border border-border rounded-xl p-6 md:p-8">
         <h2 className="font-display text-lg font-semibold text-navy mb-1">Sign in to {label}</h2>
         <p className="text-steel text-sm mb-6">
           Use your regular {label} username and password below — this form belongs to Alerio, not
           to this website. Little Sesame Foods' site never sees or stores that password.
         </p>
 
-        <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 bg-mist p-4 rounded-sm mb-4">
+        <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 bg-mist p-4 rounded-xl mb-4">
           <p className="text-navy text-sm">
             If the embedded form below doesn't load, open {label} directly instead:
           </p>
@@ -76,7 +78,7 @@ function AlerioSignIn({ label, urlKey, defaultUrl }) {
           </a>
         </div>
 
-        <div className="rounded-sm overflow-hidden border border-border bg-navy">
+        <div className="rounded-xl overflow-hidden border border-border bg-navy">
           <div className="aspect-[16/10] w-full">
             <iframe
               key={iframeKey}

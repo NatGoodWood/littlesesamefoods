@@ -5,7 +5,7 @@ export const GALLERY_URL_KEY = 'lsf_gallery_url'
 // Replace with your real Google Photos shared album link, or update it
 // any time from the Staff Portal's Website Admin tab.
 // In Google Photos: open the album -> Share -> "Create link" -> copy it.
-export const DEFAULT_GALLERY_URL = 'https://dennistemituro.pixieset.com/littlesesamegroupmeeting/'
+export const DEFAULT_GALLERY_URL = 'https://photos.app.goo.gl/REPLACE-WITH-YOUR-ALBUM-LINK'
 
 // -----------------------------------------------------------------------
 // Departments staff can select when setting up their profile. Keep these
@@ -14,31 +14,93 @@ export const DEFAULT_GALLERY_URL = 'https://dennistemituro.pixieset.com/littlese
 // -----------------------------------------------------------------------
 export const STAFF_DEPARTMENTS = [
   'Directors',
-  'HR/Admin',
-  'Accounts & Sales',
-  'Operations',
+  'Administration & Accounts',
+  'Sales & Distribution',
+  'Operations & Quality Assurance',
 ]
 
 // -----------------------------------------------------------------------
-// Stock listings ("What we bring in" on the public Home page)
+// Product categories ("What we bring in" + the Products page)
 // -----------------------------------------------------------------------
-// These are the categories staff can file stock items under — keep them
-// in sync with the category names in src/pages/Home.jsx.
+// To add a category later, add one more entry here — it automatically
+// appears on the Home page, the Products page, the Stock Listings form and
+// the Site Images "Categories" section. `slug` is what's stored in the
+// database and used in the web address (/products/<slug>), so keep it
+// lowercase with no spaces. `defaultImage` is only used until a photo is
+// uploaded for that category from the Staff Portal.
 export const PRODUCT_CATEGORIES = [
-  'Poultry',
-  'Beef',
-  'Fish',
+  {
+    slug: 'poultry',
+    label: 'Poultry',
+    desc: 'Browse through our variety of poultry products.',
+    defaultImage: '/wings.jpg',
+  },
+  {
+    slug: 'beef',
+    label: 'Beef',
+    desc: 'Browse through our variety of beef products.',
+    defaultImage: '/beef.jpg',
+  },
+  {
+    slug: 'fish',
+    label: 'Fish',
+    desc: 'Browse through our variety of fish products.',
+    defaultImage: '/mackerel.jpg',
+  },
 ]
 
+export function getCategory(slug) {
+  const key = String(slug || '').trim().toLowerCase()
+  return PRODUCT_CATEGORIES.find((c) => c.slug === key)
+}
+
+// Older stock rows were saved with display names ("Beef & Meat", "Seafood").
+// This maps those onto the current slugs so nothing disappears.
+const LEGACY_CATEGORY_NAMES = {
+  poultry: 'poultry',
+  beef: 'beef',
+  'beef & meat': 'beef',
+  fish: 'fish',
+  seafood: 'fish',
+}
+
+export function normalizeCategory(value) {
+  const key = String(value || '').trim().toLowerCase()
+  return LEGACY_CATEGORY_NAMES[key] || key
+}
+
+// -----------------------------------------------------------------------
+// Who can do what in the Staff Portal
+// -----------------------------------------------------------------------
 // Only staff in one of these departments (or anyone with is_admin) can
 // add, edit or remove stock listings — per management's request, that's
 // Admin & HR / Accounts and Sales. Directors and Operations do not get
 // this tab unless they're separately marked as admin.
-export const STOCK_MANAGER_DEPARTMENTS = ['HR/Admin', 'Accounts & Sales']
+export const STOCK_MANAGER_DEPARTMENTS = ['Administration & Accounts', 'Sales & Distribution']
 
 export function canManageStock(profile) {
   return Boolean(profile?.is_admin) || STOCK_MANAGER_DEPARTMENTS.includes(profile?.department)
 }
+
+// Banner, category photos, gallery and About-page photos change how the
+// whole public site looks, so only staff marked is_admin can manage them.
+export function canManageSiteImages(profile) {
+  return Boolean(profile?.is_admin)
+}
+
+// -----------------------------------------------------------------------
+// Site images (uploaded from the Staff Portal, stored in Supabase Storage)
+// -----------------------------------------------------------------------
+export const SITE_IMAGES_BUCKET = 'site-images'
+export const SLOT_BANNER = 'banner'
+export const SLOT_GALLERY = 'gallery'
+export const SLOT_ABOUT = 'about'
+export function categorySlot(slug) {
+  return `category:${slug}`
+}
+// Largest photo a staff member can pick (it's shrunk automatically before
+// upload, so phone photos are fine).
+export const MAX_UPLOAD_BYTES = 12 * 1024 * 1024
 
 // -----------------------------------------------------------------------
 // Alerio ERP / HRM portal links

@@ -5,6 +5,7 @@
 @layer base {
   html {
     scroll-behavior: smooth;
+    scroll-padding-top: 5rem;
   }
 
   body {
@@ -13,6 +14,11 @@
 
   h1, h2, h3, h4 {
     @apply font-display text-navy;
+  }
+
+  ::selection {
+    background-color: #D5B840;
+    color: #062A20;
   }
 
   :focus-visible {
@@ -35,17 +41,17 @@
     @apply max-w-content mx-auto px-6 md:px-10;
   }
 
-  /* Buttons: a quick lift on hover, a settle-down "press" on click */
+  /* Buttons: pill-shaped, lift on hover, settle down on click */
   .btn-primary {
-    @apply inline-flex items-center gap-2 bg-gold hover:bg-gold-dark text-navy font-display font-semibold px-6 py-3 rounded-sm transition-all duration-200 ease-out hover:-translate-y-0.5 hover:shadow-[0_8px_20px_-8px_rgba(0,0,0,0.35)] active:translate-y-0 active:scale-[0.97] active:shadow-none;
+    @apply inline-flex items-center justify-center gap-2 bg-gold hover:bg-gold-dark text-navy font-display font-semibold px-7 py-3.5 rounded-full transition-all duration-200 ease-out hover:-translate-y-0.5 hover:shadow-[0_10px_24px_-10px_rgba(213,184,64,0.8)] active:translate-y-0 active:scale-[0.97] active:shadow-none;
   }
 
   .btn-outline {
-    @apply inline-flex items-center gap-2 border border-ice/40 hover:border-gold hover:text-gold text-ice font-display font-semibold px-6 py-3 rounded-sm transition-all duration-200 ease-out hover:-translate-y-0.5 active:translate-y-0 active:scale-[0.97];
+    @apply inline-flex items-center justify-center gap-2 border border-ice/40 hover:border-gold hover:text-gold text-ice font-display font-semibold px-7 py-3.5 rounded-full transition-all duration-200 ease-out hover:-translate-y-0.5 active:translate-y-0 active:scale-[0.97];
   }
 
   .btn-outline-dark {
-    @apply inline-flex items-center gap-2 border border-navy/25 hover:border-gold hover:text-gold-dark text-navy font-display font-semibold px-6 py-3 rounded-sm transition-all duration-200 ease-out hover:-translate-y-0.5 active:translate-y-0 active:scale-[0.97];
+    @apply inline-flex items-center justify-center gap-2 border border-navy/25 hover:border-gold hover:text-gold-dark text-navy font-display font-semibold px-7 py-3.5 rounded-full transition-all duration-200 ease-out hover:-translate-y-0.5 active:translate-y-0 active:scale-[0.97];
   }
 
   .section {
@@ -53,10 +59,10 @@
   }
 
   .kicker {
-    @apply text-gold-dark font-display font-semibold tracking-wide text-sm;
+    @apply text-gold-dark font-display font-semibold tracking-wide text-xs uppercase;
   }
 
-  /* Animated underline for text links (nav, footer) */
+  /* Animated underline for text links (footer) */
   .link-underline {
     position: relative;
     display: inline-block;
@@ -100,4 +106,80 @@
   .page-transition {
     animation: page-enter 0.4s ease-out both;
   }
+}
+
+/* ------------------------------------------------------------------
+   Modern UI helpers (plain CSS)
+   ------------------------------------------------------------------ */
+
+/* Scroll-reveal: fades and rises into view (see Reveal in UI.jsx) */
+.reveal {
+  opacity: 0;
+  transform: translateY(18px);
+  transition: opacity 0.7s ease, transform 0.7s cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+.reveal.is-visible {
+  opacity: 1;
+  transform: none;
+}
+@media (prefers-reduced-motion: reduce) {
+  .reveal {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* Home banner slider */
+@keyframes kenburns {
+  from {
+    transform: scale(1.02);
+  }
+  to {
+    transform: scale(1.1);
+  }
+}
+.kenburns {
+  animation: kenburns 9s ease-out forwards;
+}
+
+@keyframes hero-rise {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+.hero-rise {
+  animation: hero-rise 0.8s cubic-bezier(0.2, 0.7, 0.2, 1) both;
+}
+
+@keyframes slide-progress {
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: scaleX(1);
+  }
+}
+.slide-progress {
+  animation-name: slide-progress;
+  animation-timing-function: linear;
+  animation-fill-mode: forwards;
+  animation-duration: 6500ms;
+}
+
+/* Banner slide with no photo: deep green with soft gold/green glows */
+.slide-fallback {
+  background:
+    radial-gradient(900px circle at 85% 15%, rgba(213, 184, 64, 0.22), transparent 55%),
+    radial-gradient(700px circle at 8% 95%, rgba(0, 103, 78, 0.55), transparent 60%),
+    linear-gradient(135deg, #062a20 0%, #0b4433 100%);
+}
+
+/* Neutral tile shown when a product/category photo is missing */
+.img-placeholder {
+  background: linear-gradient(135deg, #eef2eb 0%, #d9e3d7 100%);
 }

@@ -1,76 +1,128 @@
 import { useEffect, useState } from 'react'
-import { SectionHeading, CTABanner } from '../components/UI.jsx'
-import { IconArrow, IconGlobe } from '../components/Icons.jsx'
-import { GALLERY_URL_KEY, DEFAULT_GALLERY_URL } from '../data/settings.js'
+import { PageHero, CTABanner, ImageWithFallback, SectionHeading } from '../components/UI.jsx'
+import Lightbox from '../components/Lightbox.jsx'
+import { IconArrow, IconGlobe, IconImage } from '../components/Icons.jsx'
+import { GALLERY_URL_KEY, DEFAULT_GALLERY_URL, SLOT_GALLERY } from '../data/settings.js'
+import { useSiteImages } from '../data/siteHooks.js'
 
-export default function Gallery() {
-  // The gallery link can be updated from /admin (management only) without
-  // touching code. It falls back to the default link below if none is saved.
-  const [galleryUrl, setGalleryUrl] = useState(DEFAULT_GALLERY_URL)
-
-  useEffect(() => {
-    const saved = window.localStorage.getItem(GALLERY_URL_KEY)
-    if (saved) setGalleryUrl(saved)
-  }, [])
+export function GalleryView({ photos, loaded, albumUrl, onOpen }) {
+  const hasAlbum = !String(albumUrl).includes('REPLACE-WITH-YOUR-ALBUM-LINK')
 
   return (
     <div>
-      <section className="bg-navy bg-frost">
-        <div className="container-page py-20 md:py-24">
-          <div className="max-w-2xl">
-            <h1 className="text-4xl md:text-5xl font-semibold text-ice leading-[1.1]">Gallery</h1>
-            <p className="mt-6 text-ice/70 text-lg leading-relaxed">
-              A look inside our warehouse, cold storage facilities and the products we bring in — from
-              arrival to distribution.
-            </p>
-          </div>
-        </div>
-      </section>
+      <PageHero
+        title="Gallery"
+        lede="A look inside our warehouse, cold storage facilities and the products we bring in from arrival to distribution."
+      />
 
       <section className="section bg-ice">
         <div className="container-page">
-          <SectionHeading
-            title="Browse our photo album"
-            lede="Our full gallery is hosted on Google Photos. Preview it below, or open it directly for the best experience."
-          />
+          <SectionHeading title="Photos from Little Sesame Foods" />
 
-          <div className="mt-10 flex flex-col md:flex-row items-start md:items-center justify-between gap-6 bg-mist p-6 md:p-8 rounded-sm">
-            <div className="flex items-center gap-4">
-              <IconGlobe className="w-8 h-8 text-gold-dark shrink-0" />
-              <p className="text-navy text-sm md:text-base leading-relaxed">
-                For the fastest, full-resolution browsing experience, view the album directly on
-                Google Photos.
-              </p>
+          {!loaded && (
+            <div className="mt-12 grid grid-cols-2 gap-4 md:grid-cols-3">
+              {Array.from({ length: 6 }).map((_, i) => (
+                <div key={i} className="aspect-[4/3] animate-pulse rounded-2xl bg-mist" />
+              ))}
             </div>
-            <a
-              href={galleryUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="btn-primary shrink-0"
-            >
-              Open Full Gallery <IconArrow />
-            </a>
-          </div>
+          )}
 
-          <div className="mt-10 rounded-sm overflow-hidden border border-border bg-navy">
-            <div className="aspect-video w-full">
-              <iframe
-                src={galleryUrl}
-                title="Little Sesame Foods photo gallery"
-                className="w-full h-full"
-                loading="lazy"
-                allow="fullscreen"
-              />
+          {loaded && photos.length === 0 && (
+            <div className="mt-12 rounded-3xl border border-border bg-mist/60 p-12 text-center">
+              <IconImage className="mx-auto h-10 w-10 text-gold-dark" />
+              <p className="mt-4 text-lg font-semibold text-navy">Photos coming soon</p>
+              <p className="mt-2 text-steel">We're adding pictures of our facilities and products.</p>
             </div>
-          </div>
-          <p className="mt-4 text-xs text-steel">
-            If the preview above doesn't display, use the "Open Full Gallery" button — this is a
-            restriction Google Photos applies to embedded pages, not a broken link.
-          </p>
+          )}
+
+          {loaded && photos.length > 0 && (
+            <div className="mt-12 columns-1 gap-5 sm:columns-2 lg:columns-3">
+              {photos.map((photo, i) => (
+                <button
+                  key={photo.id}
+                  type="button"
+                  onClick={() => onOpen(i)}
+                  aria-label={`Open photo ${i + 1}`}
+                  className="group mb-5 block w-full cursor-zoom-in overflow-hidden rounded-2xl bg-mist break-inside-avoid shadow-soft"
+                >
+                  <ImageWithFallback
+                    src={photo.src}
+                    alt={photo.alt}
+                    className="h-auto w-full min-h-[120px] object-cover transition-transform duration-500 group-hover:scale-105"
+                  />
+                </button>
+              ))}
+            </div>
+          )}
         </div>
       </section>
 
+      {hasAlbum && (
+        <section className="bg-mist py-16">
+          <div className="container-page">
+            <div className="flex flex-col items-start justify-between gap-6 rounded-3xl border border-border bg-ice p-8 md:flex-row md:items-center">
+              <div className="flex items-center gap-4">
+                <IconGlobe className="h-8 w-8 shrink-0 text-gold-dark" />
+                <p className="text-sm leading-relaxed text-navy md:text-base">
+                  Want to see more? Our complete photo album is on Google Photos.
+                </p>
+              </div>
+              <a href={albumUrl} target="_blank" rel="noopener noreferrer" className="btn-primary shrink-0">
+                Open Full Album <IconArrow />
+              </a>
+            </div>
+
+            <details className="mt-6 overflow-hidden rounded-3xl border border-border bg-ice">
+              <summary className="cursor-pointer px-8 py-5 text-sm font-medium text-navy">
+                Preview the album on this page
+              </summary>
+              <div className="aspect-video w-full bg-navy">
+                <iframe
+                  src={albumUrl}
+                  title="Little Sesame Foods photo album"
+                  className="h-full w-full"
+                  loading="lazy"
+                  allow="fullscreen"
+                />
+              </div>
+              <p className="px-8 py-4 text-xs text-steel">
+                If the preview stays blank, use "Open Full Album" — Google Photos doesn't allow some of its
+                pages to be shown inside other websites.
+              </p>
+            </details>
+          </div>
+        </section>
+      )}
+
       <CTABanner />
     </div>
+  )
+}
+
+export default function Gallery() {
+  // The Google Photos link can be updated from the Staff Portal (Website
+  // Admin tab) without touching code.
+  const [albumUrl, setAlbumUrl] = useState(DEFAULT_GALLERY_URL)
+  const [openIndex, setOpenIndex] = useState(null)
+  const { images, loaded } = useSiteImages([SLOT_GALLERY])
+
+  useEffect(() => {
+    const saved = window.localStorage.getItem(GALLERY_URL_KEY)
+    if (saved) setAlbumUrl(saved)
+  }, [])
+
+  const photos = images.map((img, i) => ({
+    id: img.id,
+    src: img.image_url,
+    alt: img.title || `Little Sesame Foods photo ${i + 1}`,
+  }))
+
+  return (
+    <>
+      <GalleryView photos={photos} loaded={loaded} albumUrl={albumUrl} onOpen={setOpenIndex} />
+      {openIndex !== null && photos[openIndex] ? (
+        <Lightbox items={photos} index={openIndex} onClose={() => setOpenIndex(null)} onIndexChange={setOpenIndex} />
+      ) : null}
+    </>
   )
 }
