@@ -168,7 +168,7 @@
   animation-name: slide-progress;
   animation-timing-function: linear;
   animation-fill-mode: forwards;
-  animation-duration: 6500ms;
+  animation-duration: 4500ms;
 }
 
 /* Banner slide with no photo: deep green with soft gold/green glows */
