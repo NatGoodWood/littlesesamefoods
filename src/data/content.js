@@ -39,8 +39,8 @@ export const departments = [
     name: 'Facility Supervisors and Store Keeper',
     members: [
       { name: 'Jones Lomotey Kitcher', role: 'Warehouse Supervisor', image: '/team/jones.jpg' },
-      { name: 'Reuben Adobah Arhin', role: 'Senior Coldroom Specialist', image: '/team/reuben-adobah-arhin.jpg' },
-      { name: 'Julius Nic-Browne Gagbadah', role: 'Coldroom Storekeeper', image: '/team/julius.jpg' },
+      { name: 'Reuben Adobah Arhin', role: 'Senior Coldroom Supervisor', image: '/team/reuben-adobah-arhin.jpg' },
+      { name: 'Julius Nic-Browne Gagbadah', role: 'Coldroom Supervisor', image: '/team/julius.jpg' },
     ],
   },
 ]
