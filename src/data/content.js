@@ -26,8 +26,8 @@ export const departments = [
   {
     name: 'Administration & Human Resource',
     members: [
-      { name: 'Eunice Larbi', role: 'Human Resources/Administrative Specialist', image: '/team/eunice.jpg' },
-      { name: 'Caleb Nathaniel Wood', role: 'Administrative Operations Supervisor', image: '/team/caleb-nathaniel-wood.jpg' },
+      { name: 'Eunice Larbi', role: 'Human Resources/Administrative Specialist', image: '/team/eunice.jpg',email:"elarbi@littlesesamefoods.org" },
+      { name: 'Caleb Nathaniel Wood', role: 'Administrative Operations Supervisor', image: '/team/caleb-nathaniel-wood.jpg',email:"cwood@littlesesamefoods.org" },
     ],
   },
   {
