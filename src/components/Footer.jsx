@@ -1,5 +1,5 @@
 import { NavLink } from 'react-router-dom'
-import { IconMail, IconPhone, IconPin, IconLinkedIn, IconInstagram, IconFacebook } from './Icons.jsx'
+import { IconMail, IconPhone, IconPin, IconWhatsApp, IconInstagram, IconFacebook } from './Icons.jsx'
 import { companyInfo } from '../data/content.js'
 import { PRODUCT_CATEGORIES } from '../data/settings.js'
 
@@ -22,13 +22,13 @@ export default function Footer() {
             Americas and beyond proudly part of the Little Sesame Group.
           </p>
           <div className="mt-6 flex items-center gap-3">
-            <a href="#" aria-label="LinkedIn" className={socialClass}>
-              <IconLinkedIn />
+            <a href="https://wa.me/233538910899" aria-label="WhatsApp" className={socialClass}>
+              <IconWhatsApp />
             </a>
-            <a href="#" aria-label="Instagram" className={socialClass}>
+            <a href="https://www.instagram.com/littlesesamefoods/" aria-label="Instagram" className={socialClass}>
               <IconInstagram />
             </a>
-            <a href="#" aria-label="Facebook" className={socialClass}>
+            <a href="https://www.facebook.com/littlesesamefoods/" aria-label="Facebook" className={socialClass}>
               <IconFacebook />
             </a>
           </div>

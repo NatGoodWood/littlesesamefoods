@@ -184,7 +184,7 @@ export function CTABanner() {
             <NavLink to="/products" className="btn-primary">
               Browse Products <IconArrow />
             </NavLink>
-            <NavLink to="/about" className="btn-outline">
+            <NavLink to="/contact" className="btn-outline">
               Talk to Our Team
             </NavLink>
           </div>

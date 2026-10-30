@@ -1,5 +1,5 @@
 import { NavLink } from 'react-router-dom'
-import { IconArrow, IconPhone, IconFacebook, IconMail, IconShield, IconThermometer, IconLeaf } from '../components/Icons.jsx'
+import { IconArrow, IconPhone, IconWhatsApp, IconMail, IconShield, IconThermometer, IconLeaf } from '../components/Icons.jsx'
 
 
 
@@ -25,7 +25,9 @@ export default function Contact() {
                 <a href="tel:+233242229096" aria-label="Phone" className="w-9 h-9 rounded-full border border-ice/100 flex items-center justify-center hover:border-gold hover:text-gold hover:-translate-y-0.5 active:scale-90 transition-all duration-200">
                   <IconPhone className="w-10 h-7 text-gold shrink-0" />
                 </a>
-                
+                <a href="https://wa.me/233538910899" aria-label="WhatsApp" className="w-9 h-9 rounded-full border border-ice/100 flex items-center justify-center hover:border-gold hover:text-gold hover:-translate-y-0.5 active:scale-90 transition-all duration-200">
+                  <IconWhatsApp className="w-10 h-7 text-gold shrink-0" />
+                </a>
                 </div>
             </div>
           </div>

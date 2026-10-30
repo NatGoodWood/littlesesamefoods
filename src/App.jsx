@@ -7,6 +7,7 @@ import Products from './pages/Products.jsx'
 import Team from './pages/Team.jsx'
 import Gallery from './pages/Gallery.jsx'
 import Admin from './pages/Admin.jsx'
+import Contact from './pages/Contact.jsx'
 
 function ScrollToTop() {
   const { pathname } = useLocation()
@@ -28,6 +29,7 @@ export default function App() {
           <Route path="/products/:category" element={<Products />} />
           <Route path="/team" element={<Team />} />
           <Route path="/gallery" element={<Gallery />} />
+          <Route path="/contact" element={<Contact />} />
           <Route path="*" element={<Home />} />
         </Route>
         <Route path="/admin" element={<Admin />} />

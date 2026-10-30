@@ -161,7 +161,7 @@ export default function Navbar() {
               </NavLink>
             )
           })}
-          <NavLink to="/about" className="btn-primary ml-3 !px-5 !py-2.5 text-sm">
+          <NavLink to="/contact" className="btn-primary ml-3 !px-5 !py-2.5 text-sm">
             Get in Touch
           </NavLink>
         </nav>
