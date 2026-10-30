@@ -54,15 +54,7 @@ export default function Team() {
 
               <div className="mt-5 flex items-center gap-3">
                 <a
-                  href="#"
-                  aria-label={`${d.name} on LinkedIn`}
-                  className="flex h-10 w-10 items-center justify-center rounded-full border border-border text-steel transition-colors hover:border-gold hover:text-gold-dark"
-                >
-                  <IconLinkedIn />
-                </a>
-
-                <a
-                  href="#"
+                  href={`mailto:${d.email}`}
                   aria-label={`Email ${d.name}`}
                   className="flex h-10 w-10 items-center justify-center rounded-full border border-border text-steel transition-colors hover:border-gold hover:text-gold-dark"
                 >
