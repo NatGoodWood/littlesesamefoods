@@ -19,7 +19,7 @@ import { createClient } from '@supabase/supabase-js'
 // to be public. Access control is handled by the Row Level Security
 // policies in supabase-setup.sql, not by hiding this key.
 // -----------------------------------------------------------------------
-const supabaseUrl = 'https://kjlhccdpdomrwvefclox.supabase.co'
-const supabaseAnonKey = 'sb_publishable_59npdkCQGLQsQYnefbhiTA_1xgEEtA0'
+const supabaseUrl = 'https://wzcrxoiqyfsziylpvlof.supabase.co'
+const supabaseAnonKey = 'sb_publishable_dQKoBDQL6J7tx7Ehe6-eTw_U19gJ87y'
 
 export const supabase = createClient(supabaseUrl, supabaseAnonKey)
