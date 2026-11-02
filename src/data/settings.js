@@ -16,7 +16,7 @@ export const STAFF_DEPARTMENTS = [
   'Directors',
   'Administration & HR',
   'Accounts & Sales',
-  'Facility Supervisor & Stores',
+  'Facility Supervisors',
 ]
 
 // -----------------------------------------------------------------------
