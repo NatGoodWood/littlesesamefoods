@@ -14,9 +14,9 @@ export const DEFAULT_GALLERY_URL = 'https://photos.app.goo.gl/REPLACE-WITH-YOUR-
 // -----------------------------------------------------------------------
 export const STAFF_DEPARTMENTS = [
   'Directors',
-  'Administration & Accounts',
-  'Sales & Distribution',
-  'Operations & Quality Assurance',
+  'Administration & HR',
+  'Accounts & Sales',
+  'Facility Supervisor & Stores',
 ]
 
 // -----------------------------------------------------------------------

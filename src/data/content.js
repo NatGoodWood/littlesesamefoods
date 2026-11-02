@@ -39,7 +39,7 @@ export const departments = [
     ],
   },
   {
-    name: 'Facility Supervisors and Store Keeper',
+    name: 'Facility Supervisors and Stores',
     members: [
       { name: 'Jones Lomotey Kitcher', role: 'Warehouse Supervisor', image: '/team/jones.jpg' },
       { name: 'Reuben Adobah Arhin', role: 'Senior Coldroom Supervisor', image: '/team/reuben-adobah-arhin.jpg' },
