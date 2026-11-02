@@ -47,6 +47,12 @@ export const PRODUCT_CATEGORIES = [
     desc: 'Browse through our variety of fish products.',
     defaultImage: '/mackerel.jpg',
   },
+  {
+    slug: 'lamb',
+    label: 'Lamb',
+    desc: 'Browse through our variety of lamb products.',
+    defaultImage: '/lamb.jpg',
+  },
 ]
 
 export function getCategory(slug) {
