@@ -26,16 +26,16 @@ export const departments = [
   {
     name: 'Administration & Human Resource',
     members: [
-      { name: 'Eunice Larbi', role: 'Human Resources/Administrative Specialist', image: '/team/eunice.jpg',email:"elarbi@littlesesamefoods.org" },
-      { name: 'Caleb Nathaniel Wood', role: 'Administrative Operations Supervisor', image: '/team/calebw.jpg',email:"cwood@littlesesamefoods.org" },
+      { name: 'Eunice Larbi', role: 'Human Resources/Administrative Specialist', image: '/team/obaa.jpg',email:"elarbi@littlesesamefoods.org" },
+      { name: 'Caleb Nathaniel Wood', role: 'Administrative Operations Supervisor', image: '/team/caleb.jpg',email:"cwood@littlesesamefoods.org" },
     ],
   },
   {
     name: 'Account & Sales',
     members: [
       { name: 'Hannah Edwin-Zoroaster', role: 'Accountant', image: '/team/hannah.jpg' },
-      { name: 'Amanda Addae', role: 'Account Officer', image: '/team/amanda-addae.jpg' },
-      { name: 'Linda Amankwah Acquah', role: 'Sales Officer', image: '/team/linda-amankwah-acquah.jpg' },
+      { name: 'Amanda Addae', role: 'Account Officer', image: '/team/amandaa.jpg' },
+      { name: 'Linda Amankwah Acquah', role: 'Sales Officer', image: '/team/linda.jpg' },
     ],
   },
   {
