@@ -1,8 +1,8 @@
 export const directors = [
   {
-    name: 'Madam Patience Wonder Enyonam Batse',
+    name: 'Wonder Enyonam Batse',
     role: 'Founder & Managing Director',
-    bio: 'Madam Patience Wonder Enyonam Batse is the visionary behind Little Sesame Foods, leading the company with a focus on quality, innovation, and customer satisfaction. She holds a wealth of experience in the food industry, having successfully navigated the complexities of food importation and distribution in Ghana. A degree in Management studies and an Executive MBA from the University of Ghana, Legon, equips her with the strategic insight to drive the company forward. Her leadership is characterized by a commitment to excellence and a passion for delivering high-quality food products to the Ghanaian market.',
+    bio: 'Wonder Enyonam Batse is the visionary behind Little Sesame Foods, leading the company with a focus on quality, innovation, and customer satisfaction. She holds a wealth of experience in the food industry, having successfully navigated the complexities of food importation and distribution in Ghana. A degree in Management studies and an Executive MBA from the University of Ghana, Legon, equips her with the strategic insight to drive the company forward. Her leadership is characterized by a commitment to excellence and a passion for delivering high-quality food products to the Ghanaian market.',
     image: '/team/patience-scott-obu.jpg',
     email: 'pbatse@littlesesamefoods.org',
   },
@@ -41,9 +41,9 @@ export const departments = [
   {
     name: 'Facility Supervisors',
     members: [
-      { name: 'Jones Lomotey Kitcher', role: 'Warehouse Supervisor', image: '/team/jones.jpg' },
-      { name: 'Reuben Adobah Arhin', role: 'Senior Coldroom Supervisor', image: '/team/reuben.jpg' },
-      { name: 'Julius Nic-Browne Gagbadah', role: 'Coldroom Supervisor', image: '/team/julius.jpg' },
+      { name: 'Jones Lomotey Kitcher', role: 'Warehouse Supervisor(Izako Annex)', image: '/team/jones.jpg' },
+      { name: 'Reuben Adobah Arhin', role: 'Senior Coldroom Supervisor(Nova)', image: '/team/reuben.jpg' },
+      { name: 'Julius Nic-Browne Gagbadah', role: 'Coldroom Supervisor(D&D)', image: '/team/julius.jpg' },
     ],
   },
 ]
