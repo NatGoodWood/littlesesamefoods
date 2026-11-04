@@ -48,9 +48,9 @@ export const PRODUCT_CATEGORIES = [
     defaultImage: '/mackerel.jpg',
   },
   {
-    slug: 'lamb',
-    label: 'Lamb',
-    desc: 'Browse through our variety of lamb products.',
+    slug: 'mutton',
+    label: 'Mutton',
+    desc: 'Browse through our variety of mutton products.',
     defaultImage: '/lamb.jpg',
   },
 ]

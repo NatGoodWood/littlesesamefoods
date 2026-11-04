@@ -419,8 +419,8 @@ export function AboutView({ heroImage }) {
               distribution business trusted by retailers and food service partners.
             </p>
             <p className="mt-4 leading-relaxed text-steel">
-              Today, we import a wide range of frozen goods — poultry, meat, seafood, vegetables and
-              more sourced from processors across Europe, the Americas and other regions, and
+              Today, we import a wide range of frozen goods from poultry, beef, fish and mutton
+              sourced from processors across Europe, the Americas and other regions, and
               distributed through a network built on consistency and trust.
             </p>
           </Reveal>
