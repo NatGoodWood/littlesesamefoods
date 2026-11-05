@@ -40,6 +40,7 @@ export default function Footer() {
             <li><NavLink to="/" className="link-underline transition-colors hover:text-gold">Home</NavLink></li>
             <li><NavLink to="/about" className="link-underline transition-colors hover:text-gold">About</NavLink></li>
             <li><NavLink to="/products" className="link-underline transition-colors hover:text-gold">Products</NavLink></li>
+             <li><NavLink to="/facilities" className="link-underline transition-colors hover:text-gold">Facilities</NavLink></li>
             <li><NavLink to="/team" className="link-underline transition-colors hover:text-gold">Directors &amp; Team</NavLink></li>
             <li><NavLink to="/gallery" className="link-underline transition-colors hover:text-gold">Gallery</NavLink></li>
           </ul>

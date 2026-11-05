@@ -76,3 +76,30 @@ export function firstImageUrl(images, slot) {
   const found = (images || []).find((img) => img.slot === slot)
   return found?.image_url || null
 }
+
+// Loads the location details staff enter for each cold store facility
+// (address, directions, phone, hours, map link), keyed by facility slug.
+export function useFacilityDetails() {
+  const [state, setState] = useState({ details: {}, loaded: false })
+
+  useEffect(() => {
+    let cancelled = false
+
+    Promise.resolve(supabase.from('facility_details').select('*'))
+      .then(({ data, error }) => {
+        if (cancelled) return
+        const details = {}
+        if (!error && data) for (const row of data) details[row.slug] = row
+        setState({ details, loaded: true })
+      })
+      .catch(() => {
+        if (!cancelled) setState({ details: {}, loaded: true })
+      })
+
+    return () => {
+      cancelled = true
+    }
+  }, [])
+
+  return state
+}

@@ -107,6 +107,59 @@ export function categorySlot(slug) {
 // Largest photo a staff member can pick (it's shrunk automatically before
 // upload, so phone photos are fine).
 export const MAX_UPLOAD_BYTES = 12 * 1024 * 1024
+// -----------------------------------------------------------------------
+// Cold store facilities (the Facilities page)
+// -----------------------------------------------------------------------
+// The four facilities are listed here. Their photos and location details
+// (address, directions, phone, opening hours, map link) are filled in from
+// the Staff Portal: Site Images -> Facilities. `slug` is used in the
+// database and in page links, so keep it lowercase with no spaces.
+// To reorder facilities on the page, reorder this list.
+export const FACILITIES = [
+  {
+    slug: 'lsf-main',
+    name: 'LSF Main',
+    blurb: 'Our main cold store, holding frozen poultry, beef and fish under controlled temperatures.',
+  },
+  {
+    slug: 'izako-annex',
+    name: 'Izako Annex',
+    blurb: 'An annex cold store that adds extra temperature-controlled storage capacity.',
+  },
+  {
+    slug: 'nova',
+    name: 'Nova',
+    blurb: 'Temperature-controlled cold storage supporting our frozen food distribution.',
+  },
+  {
+    slug: 'dd',
+    name: 'D&D',
+    blurb: 'Temperature-controlled cold storage supporting our frozen food distribution.',
+  },
+]
+
+export function facilitySlot(slug) {
+  return `facility:${slug}`
+}
+
+// Only ever link to http(s) addresses (never javascript: and similar).
+export function safeHttpUrl(value) {
+  const v = String(value || '').trim()
+  return /^https?:\/\//i.test(v) ? v : ''
+}
+
+export function telHref(phone) {
+  const digits = String(phone || '').replace(/[^\d+]/g, '')
+  return digits ? `tel:${digits}` : ''
+}
+
+// Google Maps links that need no API key.
+export function mapsSearchUrl(query) {
+  return `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(query)}`
+}
+export function mapsEmbedUrl(query) {
+  return `https://maps.google.com/maps?q=${encodeURIComponent(query)}&output=embed`
+}
 
 // -----------------------------------------------------------------------
 // Alerio ERP / HRM portal links

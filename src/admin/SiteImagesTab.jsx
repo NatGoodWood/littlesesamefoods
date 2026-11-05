@@ -5,7 +5,9 @@ import {
   SLOT_BANNER,
   SLOT_GALLERY,
   SLOT_ABOUT,
+  FACILITIES,
   categorySlot,
+  facilitySlot,
 } from '../data/settings.js'
 import { uploadSiteImage, removeSiteImageFile } from './imageUtils.js'
 import { ImageWithFallback } from '../components/UI.jsx'
@@ -15,6 +17,7 @@ const SECTIONS = [
   { id: 'banner', label: 'Home banner' },
   { id: 'categories', label: 'Category photos' },
   { id: 'gallery', label: 'Gallery' },
+  { id: 'facilities', label: 'Facilities' },
   { id: 'about', label: 'About page' },
 ]
 
@@ -51,7 +54,7 @@ export function UploadButton({ label, multiple = false, disabled = false, onFile
 export function SlideEditor({ slide, index, total, busy, onSave, onMove, onDelete }) {
   const [title, setTitle] = useState(slide.title || '')
   const [subtitle, setSubtitle] = useState(slide.subtitle || '')
-  const dirty = title !== (slide.title || '') || subtitle !== (slide.subtitle || '')
+  const dirty = title.trim() !== (slide.title || '') || subtitle.trim() !== (slide.subtitle || '')
 
   return (
     <li className="flex flex-col gap-4 rounded-xl border border-border bg-ice p-4 md:flex-row">
@@ -203,8 +206,125 @@ export function PhotoGrid({ photos, busyId, onDelete }) {
   )
 }
 
+const FACILITY_FIELDS = ['address', 'directions', 'description', 'phone', 'hours', 'map_url']
+
+export function FacilityEditor({ facility, details, photos, busy, onSaveDetails, onAddPhotos, onDeletePhoto }) {
+  const saved = details || {}
+  const [form, setForm] = useState(() =>
+    Object.fromEntries(FACILITY_FIELDS.map((k) => [k, saved[k] || '']))
+  )
+  const dirty = FACILITY_FIELDS.some((k) => form[k].trim() !== (saved[k] || ''))
+  const set = (key) => (e) => setForm((f) => ({ ...f, [key]: e.target.value }))
+  const id = (key) => `fac-${facility.slug}-${key}`
+
+  return (
+    <div className="space-y-6 rounded-xl border border-border bg-ice p-6 md:p-8">
+      <div>
+        <h3 className="font-display text-lg font-semibold text-navy">{facility.name}</h3>
+        <p className="mt-1 text-sm text-steel">Shown on the public Facilities page.</p>
+      </div>
+
+      <div className="grid gap-4 md:grid-cols-2">
+        <div className="md:col-span-2">
+          <label htmlFor={id('address')} className="mb-1 block text-xs font-medium text-navy">
+            Location / address
+          </label>
+          <textarea
+            id={id('address')}
+            rows={2}
+            value={form.address}
+            onChange={set('address')}
+            placeholder="Street, area, town — this is also used for the map"
+            className={`${inputClass} resize-none`}
+          />
+        </div>
+        <div className="md:col-span-2">
+          <label htmlFor={id('directions')} className="mb-1 block text-xs font-medium text-navy">
+            How to find it (landmarks, entrance, gate)
+          </label>
+          <textarea
+            id={id('directions')}
+            rows={2}
+            value={form.directions}
+            onChange={set('directions')}
+            placeholder="e.g. Opposite the ... , enter through Gate 2"
+            className={`${inputClass} resize-none`}
+          />
+        </div>
+        <div className="md:col-span-2">
+          <label htmlFor={id('description')} className="mb-1 block text-xs font-medium text-navy">
+            Description (optional — a default is shown if empty)
+          </label>
+          <textarea
+            id={id('description')}
+            rows={3}
+            value={form.description}
+            onChange={set('description')}
+            className={`${inputClass} resize-none`}
+          />
+        </div>
+        <div>
+          <label htmlFor={id('phone')} className="mb-1 block text-xs font-medium text-navy">
+            Phone
+          </label>
+          <input id={id('phone')} type="text" value={form.phone} onChange={set('phone')} className={inputClass} />
+        </div>
+        <div>
+          <label htmlFor={id('hours')} className="mb-1 block text-xs font-medium text-navy">
+            Opening hours
+          </label>
+          <input
+            id={id('hours')}
+            type="text"
+            value={form.hours}
+            onChange={set('hours')}
+            placeholder="e.g. Mon–Sat, 7am – 6pm"
+            className={inputClass}
+          />
+        </div>
+        <div className="md:col-span-2">
+          <label htmlFor={id('map_url')} className="mb-1 block text-xs font-medium text-navy">
+            Google Maps link (optional — used for the "Get directions" button)
+          </label>
+          <input
+            id={id('map_url')}
+            type="url"
+            value={form.map_url}
+            onChange={set('map_url')}
+            placeholder="https://maps.app.goo.gl/..."
+            className={inputClass}
+          />
+        </div>
+      </div>
+
+      <button
+        type="button"
+        disabled={!dirty || busy}
+        onClick={() => onSaveDetails(facility.slug, form)}
+        className="btn-primary !py-2.5 !px-5 text-sm disabled:opacity-50"
+      >
+        Save details
+      </button>
+
+      <div className="space-y-4 border-t border-border pt-6">
+        <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+          <p className="text-sm font-medium text-navy">Photos ({photos.length})</p>
+          <UploadButton
+            label={busy ? 'Working…' : 'Upload photos'}
+            multiple
+            disabled={busy}
+            onFiles={(files) => onAddPhotos(facility.slug, files)}
+          />
+        </div>
+        <PhotoGrid photos={photos} busyId="" onDelete={onDeletePhoto} />
+      </div>
+    </div>
+  )
+}
+
 export default function SiteImagesTab({ user }) {
   const [rows, setRows] = useState([])
+  const [details, setDetails] = useState({})
   const [loading, setLoading] = useState(true)
   const [section, setSection] = useState('banner')
   const [busy, setBusy] = useState('')
@@ -241,6 +361,12 @@ export default function SiteImagesTab({ user }) {
         setRows(data || [])
       }
       setLoading(false)
+    })
+    Promise.resolve(supabase.from('facility_details').select('*')).then(({ data }) => {
+      if (cancelled || !data) return
+      const map = {}
+      for (const row of data) map[row.slug] = row
+      setDetails(map)
     })
     return () => {
       cancelled = true
@@ -384,6 +510,23 @@ export default function SiteImagesTab({ user }) {
     await fetchRows()
   }
 
+  async function saveFacility(slug, form) {
+    setError('')
+    setMessage('')
+    setBusy(`facility-${slug}`)
+    const clean = {}
+    for (const key of FACILITY_FIELDS) clean[key] = form[key].trim() || null
+    const payload = { slug, ...clean, updated_at: new Date().toISOString() }
+    const { error: saveError } = await supabase.from('facility_details').upsert(payload, { onConflict: 'slug' })
+    if (saveError) {
+      setError('Could not save those details. Make sure supabase-setup.sql has been run, then try again.')
+    } else {
+      setDetails((prev) => ({ ...prev, [slug]: { ...(prev[slug] || {}), ...payload } }))
+      setMessage('Facility details saved.')
+    }
+    setBusy('')
+  }
+
   const slides = rowsFor(SLOT_BANNER)
   const galleryPhotos = rowsFor(SLOT_GALLERY)
   const aboutRow = rowsFor(SLOT_ABOUT)[0]
@@ -518,6 +661,30 @@ export default function SiteImagesTab({ user }) {
               </div>
               <PhotoGrid photos={galleryPhotos} busyId={busy} onDelete={(p) => deleteRow(p, 'photo')} />
             </section>
+          )}
+
+          {section === 'facilities' && (
+            <div className="space-y-8">
+              <p className="max-w-2xl text-sm text-steel">
+                For each cold store, add its address and contact details and upload photos. The first
+                photo is the large picture on the Facilities page. Leave a field empty to hide it.
+              </p>
+              {FACILITIES.map((facility) => {
+                const slot = facilitySlot(facility.slug)
+                return (
+                  <FacilityEditor
+                    key={facility.slug}
+                    facility={facility}
+                    details={details[facility.slug]}
+                    photos={rowsFor(slot)}
+                    busy={busy === `facility-${facility.slug}` || busy === `add-${slot}`}
+                    onSaveDetails={saveFacility}
+                    onAddPhotos={(slug, files) => addImages(facilitySlot(slug), 'facilities', files)}
+                    onDeletePhoto={(photo) => deleteRow(photo, 'photo')}
+                  />
+                )
+              })}
+            </div>
           )}
 
           {section === 'about' && (

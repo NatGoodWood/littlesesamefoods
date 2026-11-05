@@ -8,7 +8,7 @@ import Team from './pages/Team.jsx'
 import Gallery from './pages/Gallery.jsx'
 import Admin from './pages/Admin.jsx'
 import Contact from './pages/Contact.jsx'
-
+import Facilities from './pages/Facilities.jsx'
 function ScrollToTop() {
   const { pathname } = useLocation()
   useEffect(() => {
@@ -27,6 +27,7 @@ export default function App() {
           <Route path="/about" element={<About />} />
           <Route path="/products" element={<Products />} />
           <Route path="/products/:category" element={<Products />} />
+          <Route path="/facilities" element={<Facilities />} />
           <Route path="/team" element={<Team />} />
           <Route path="/gallery" element={<Gallery />} />
           <Route path="/contact" element={<Contact />} />
