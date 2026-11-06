@@ -25,13 +25,13 @@ const DEFAULT_SLIDES = [
   },
   {
     id: 'default-range',
-    image: './legq.jpg',
+    image: './makerel.jpg',
     title: 'Poultry, beef and fish you can rely on',
     subtitle: 'Handled through a structured cold chain from point of importation to final delivery.',
   },
   {
     id: 'default-clients',
-    image: './mackerel.jpg',
+    image: './cowleg.jpg',
     title: 'Supplying wholesalers, retailers and institutions',
     subtitle: 'Supporting food availability and supply chain efficiency within Ghana.',
   },
