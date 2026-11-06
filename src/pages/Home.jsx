@@ -25,7 +25,7 @@ const DEFAULT_SLIDES = [
   },
   {
     id: 'default-range',
-    image: './awra.jpg',
+    image: './lamb.jpg',
     title: 'Poultry, beef and fish you can rely on',
     subtitle: 'Handled through a structured cold chain from point of importation to final delivery.',
   },
